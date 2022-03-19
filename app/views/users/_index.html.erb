@@ -5,6 +5,7 @@
     <th>Roll no</th>
     <th>Email</th>
     <th>Club</th>
+    <td>Roles</td>
     <th></th>
   </tr>
   </thead>
@@ -16,6 +17,11 @@
       <td><%= user.roll_no %></td>
       <td><%= user.email %></td>
       <td><%= user.club_id %></td>
+      <td>
+        <% user.roles.each do |role| %>
+          <span class="badge bg-success"><%= role.name %></span>
+        <% end %>
+      </td>
       <td>
         <div role="group" class="btn-group-sm btn-group">
           <%= link_to 'Show', user, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>

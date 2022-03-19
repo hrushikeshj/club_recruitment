@@ -1,0 +1,3 @@
+$('#modal-title').html("Edit Club");
+$('#modal-body-content').html('<%= j render("form", club: @club) %>');
+$('#modal-footer-content').html('<%= j link_to "Back", club_path(@club), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clubs
   ActiveAdmin.routes(self)
   get 'sessions/new'
   get 'sessions/create'

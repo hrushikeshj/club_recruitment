@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :role_assignment
   has_many :roles, through: :role_assignment
+  belongs_to :club
 
   accepts_nested_attributes_for :role_assignment
 

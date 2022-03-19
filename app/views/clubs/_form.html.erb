@@ -1,0 +1,22 @@
+<%= bootstrap_form_with(model: club, local: true) do |form| %>
+  <% if club.errors.any? %>
+    <div class="card">
+      <div class="card-header bg-danger text-white">
+        <%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:
+      </div>
+
+      <div class="card-body">
+        <ul>
+          <% club.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form.text_field :name, class: "input" %>
+  <%= form.text_area :info, class: "input" %>
+
+  <%= form.submit %>
+<% end %>

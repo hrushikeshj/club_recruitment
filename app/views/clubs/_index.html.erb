@@ -1,0 +1,31 @@
+<table id="clubs" class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Info</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @clubs.each do |club| %>
+    <tr>
+      <td><%= club.name %></td>
+      <td><%= club.info %></td>
+      <td>
+        <div role="group" class="btn-group-sm btn-group">
+          <%= link_to 'Show', club, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>
+          <%= link_to 'Edit', edit_club_path(club), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-info" %>
+          <%= link_to 'Destroy', club, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#clubs").DataTable();
+    });
+</script>
