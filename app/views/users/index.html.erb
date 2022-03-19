@@ -1,0 +1,25 @@
+<% content_for :title do %>Users
+<% end %>
+
+<div class="main-card mb-3 card mt-4">
+  <div class="card-header">
+    <div class="row">
+      <div class="card-header-title col-6">
+        Users
+      </div>
+
+      <div class="col-6">
+        <div role="group" class="btn-group-sm btn-group float-end">
+          <%= link_to 'New User', new_user_path, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary btn-xs" %>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="card-body">
+    <div id="table_div">
+      <%= render 'index' %>
+    </div>
+  </div>
+</div>

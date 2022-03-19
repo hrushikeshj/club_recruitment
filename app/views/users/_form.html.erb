@@ -1,0 +1,25 @@
+<%= bootstrap_form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div class="card">
+      <div class="card-header bg-danger text-white">
+        <%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:
+      </div>
+
+      <div class="card-body">
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form.text_field :name, class: "input" %>
+  <%= form.text_field :roll_no, class: "input" %>
+  <%= form.text_field :email, class: "input" %>
+  <%= form.password_field :password %>
+  <%= form.password_field :password_confirmation %>
+
+  <%= form.submit %>
+<% end %>

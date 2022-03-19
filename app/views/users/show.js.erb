@@ -1,0 +1,8 @@
+$('#modal-title').html("User");
+$('#modal-body-content').html('<%= j render("show", user: @user) %>');
+$('#modal-footer-content').html('<%= j link_to "Edit" ,edit_user_path(@user), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');
+
+
+<% if @cued %>
+$.get("<%= users_path(format: :js) %>", function () {});
+<% end %>

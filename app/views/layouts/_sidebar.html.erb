@@ -1,0 +1,110 @@
+<!--<div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+<div class="list-group list-group-flush">
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+</div>
+-->
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light side-bar-n" style="height: 100vh" >
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Orders
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          Products
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Customers
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> 
+        
+      </a>
+    </div>
+  </div>
+<script>
+
+</script>
+
+<style>
+body {
+  background: #f6f9ff;
+}
+
+#sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #aab7cf transparent;
+}
+
+#sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: #aab7cf7c;
+  border: 3px solid #aab7cf;
+}
+
+#sidebar{
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  width: 270px;
+  z-index: 996;
+  transition: all 0.3s;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #aab7cf transparent;
+  box-shadow: 0px 0px 20px rgb(1 41 112 / 10%);
+  background-color: #fff;
+}
+
+#main-body{
+  margin-left: 270px;
+  margin-top: 60px;
+  transition: all 0.3s;
+  padding: 20px 30px;
+  background: #ffffff;
+}
+.sidenav-toggled #sidebar{
+  left: -300px;
+}
+
+.sidenav-toggled #main-body{
+  margin-left: 0px;
+}
+.sidenav-toggled {}
+@media (min-width: 768px) {
+}
+
+</style>

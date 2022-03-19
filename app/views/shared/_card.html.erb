@@ -1,0 +1,11 @@
+<div class="card <%= _class if defined?(_class) %>">
+  <% if defined?(title) %>
+    <div class="card-header">
+      <%= title %>
+    </div>
+  <% end %>
+
+  <div class="card-body">
+    <%= yield %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<table id="users" class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Roll no</th>
+    <th>Email</th>
+    <th>Club</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.roll_no %></td>
+      <td><%= user.email %></td>
+      <td><%= user.club_id %></td>
+      <td>
+        <div role="group" class="btn-group-sm btn-group">
+          <%= link_to 'Show', user, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>
+          <%= link_to 'Edit', edit_user_path(user), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-info" %>
+          <%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#users").DataTable();
+    });
+</script>
