@@ -1,0 +1,28 @@
+<%%= bootstrap_form_with(model: <%= model_resource_name %>, local: false) do |form| %>
+  <%% if <%= model_resource_name %>.errors.any? %>
+    <div class="card">
+      <div class="card-header bg-danger text-white">
+        <%%= pluralize(<%= model_resource_name %>.errors.count, "error") %> prohibited this <%= model_resource_name %> from being saved:
+      </div>
+
+      <div class="card-body">
+        <ul>
+          <%% <%= model_resource_name %>.errors.each do |error| %>
+            <li><%%= error.full_message %></li>
+          <%% end %>
+        </ul>
+      </div>
+    </div>
+  <%% end %>
+
+<% attributes.each do |attribute| -%>
+  <%- if attribute.password_digest? -%>
+  <%%= form.password_field :password %>
+  <%%= form.password_field :password_confirmation %>
+  <%- else -%>
+  <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "input" %>
+  <%- end -%>
+<%- end -%>
+
+  <%%= form.submit %>
+<%% end %>

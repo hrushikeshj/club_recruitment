@@ -1,0 +1,21 @@
+<%% content_for :title do %>New <%= singular_table_name.titleize %>
+<%% end %>
+
+<div class="main-card mb-3 card mt-4">
+  <div class="card-header">
+    <i class="header-icon pe-7s-menu icon-gradient bg-love-kiss" aria-hidden="true"></i>
+    <div class="card-header-title">
+      New <%= singular_table_name.titleize %>
+    </div>
+
+    <div class="btn-actions-pane-right">
+      <div role="group" class="btn-group-sm btn-group">
+        <%%= link_to 'Back', :back, class: "btn btn-focus" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
+  </div>
+</div>

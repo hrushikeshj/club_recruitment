@@ -1,0 +1,23 @@
+<%% content_for :title do %><%= singular_table_name.titleize %>
+<%% end %>
+
+<div class="main-card mb-3 card mt-4">
+  <div class="card-header">
+    <i class="header-icon pe-7s-menu icon-gradient bg-love-kiss" aria-hidden="true"></i>
+    <div class="row">
+      <div class="card-header-title col-6">
+        <%= plural_table_name.titleize %>
+      </div>
+
+      <div class="col-6">
+        <div role="group" class="btn-group-sm btn-group float-end">
+          <%%= link_to '< Back', :back, class: "btn btn-danger" %>
+          <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-primary" %>        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <%%= render "show" %>
+  </div>
+</div>
