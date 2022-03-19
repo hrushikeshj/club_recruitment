@@ -18,8 +18,13 @@
   <%= form.text_field :name, class: "input" %>
   <%= form.text_field :roll_no, class: "input" %>
   <%= form.text_field :email, class: "input" %>
-  <%= form.password_field :password %>
-  <%= form.password_field :password_confirmation %>
+
+  <%= form.collection_check_boxes(:role_ids, Role.all, :id, :name) %>
+
+  <% if user.new_record? %>
+    <%= form.password_field :password, required: true %>
+    <%= form.password_field :password_confirmation %>
+  <% end %>
 
   <%= form.submit %>
 <% end %>
