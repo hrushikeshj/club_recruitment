@@ -18,9 +18,7 @@
       <td><%= user.email %></td>
       <td><%= user.club_id %></td>
       <td>
-        <% user.roles.each do |role| %>
-          <span class="badge bg-success"><%= role.name %></span>
-        <% end %>
+        <%= render partial: 'roles/badge', collection: user.roles, as: :role %>
       </td>
       <td>
         <div role="group" class="btn-group-sm btn-group">
@@ -39,3 +37,4 @@
         $("#users").DataTable();
     });
 </script>
+

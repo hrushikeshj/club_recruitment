@@ -3,6 +3,8 @@
   <%= @user.name %>
 </p>
 
+<%= render partial: 'roles/badge', collection: @user.roles, as: :role %>
+
 <p>
   <strong>Roll no:</strong>
   <%= @user.roll_no %>
