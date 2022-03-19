@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_19_142959) do
+ActiveRecord::Schema.define(version: 2022_03_19_145842) do
 
   create_table "active_admin_comments", charset: "utf8mb4", force: :cascade do |t|
     t.string "namespace"
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(version: 2022_03_19_142959) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
+  create_table "role_assignments", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_id"], name: "index_role_assignments_on_role_id"
+    t.index ["user_id"], name: "index_role_assignments_on_user_id"
+  end
+
+  create_table "roles", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "roll_no"
@@ -36,4 +51,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_142959) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "role_assignments", "roles"
+  add_foreign_key "role_assignments", "users"
 end
