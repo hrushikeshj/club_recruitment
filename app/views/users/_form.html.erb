@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: user) do |form| %>
+<%= bootstrap_form_with(model: user, local: user.new_record?) do |form| %>
   <% if user.errors.any? %>
     <div class="card">
       <div class="card-header bg-danger text-white">

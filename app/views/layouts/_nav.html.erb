@@ -26,7 +26,16 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <p style="font-size: 25px; padding: 0px" data-controller="sidebar" onclick="toggle()" data-action="click->sidebar#toggle"  class="btn m-0" id="sidebarToggle">Hide<i class='bx bx-menu' id="header-toggle"></i> </p>
+    <p style="font-size: 25px; padding: 0px" 
+      data-controller="toggle-class" 
+      data-action="click->toggle-class#toggle" 
+      data-toggle-class-class-param="sidenav-toggled"
+      data-toggle-class-target-param="body"
+      data-action="click->sidebar#toggle"  
+      class="btn m-0" id="sidebarToggle">
+      
+      Hide<i class='bx bx-menu' id="header-toggle"></i>
+    </p>
     <p class="nav-item ml-4">
         
     </p>
