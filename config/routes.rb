@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  resources :clubs
   ActiveAdmin.routes(self)
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
   root "users#index"
 
-  resources :users
+  resources :users do
+    resources :applications, shallow: true #only: [:index, :new, :create]
+  end
+  # [:show, :edit, :update, :destroy]
+
   resources :sessions, only: [:new, :create, :destroy]
+  resources :clubs
 
 
   get 'sign_up', to: 'users#new', as: 'signup'

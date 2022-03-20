@@ -1,0 +1,22 @@
+<% content_for :title do %>Editing Application
+<% end %>
+
+<div class="main-card mb-3 card mt-4">
+  <div class="card-header">
+    <div class="row">
+      <div class="card-header-title col-6">
+        Editing Applications
+      </div>
+
+      <div class="col-6">
+        <div role="group" class="btn-group-sm btn-group float-end">
+          <%= link_to 'Show', application_path(@application), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <%= render 'form', application: @application %>
+  </div>
+</div>

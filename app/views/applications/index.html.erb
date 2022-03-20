@@ -1,0 +1,25 @@
+<% content_for :title do %>Applications
+<% end %>
+
+<div class="main-card mb-3 card mt-4">
+  <div class="card-header">
+    <div class="row">
+      <div class="card-header-title col-6">
+        Applications
+      </div>
+
+      <div class="col-6">
+        <div role="group" class="btn-group-sm btn-group float-end">
+          <%= link_to 'New Application', new_user_application_path(@user), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary btn-xs" %>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="card-body">
+    <div id="table_div">
+      <%= render 'index' %>
+    </div>
+  </div>
+</div>

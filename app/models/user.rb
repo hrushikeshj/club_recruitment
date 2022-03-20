@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :role_assignment, inverse_of: :user
   has_many :roles, through: :role_assignment
   belongs_to :club, optional: true
+  has_one :application, dependent: :destroy
 
   accepts_nested_attributes_for :role_assignment
 

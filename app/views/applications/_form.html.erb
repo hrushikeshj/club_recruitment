@@ -1,0 +1,23 @@
+<%= bootstrap_form_with(model: [@user, application], local: true) do |form| %>
+  <% if application.errors.any? %>
+    <div class="card">
+      <div class="card-header bg-danger text-white">
+        <%= pluralize(application.errors.count, "error") %> prohibited this application from being saved:
+      </div>
+
+      <div class="card-body">
+        <ul>
+          <% application.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form.rich_text_area :projects, class: "input" %>
+  <%= form.rich_text_area :skills, class: "input" %>
+  <%= form.text_field :github_link, class: "input" %>
+
+  <%= form.submit %>
+<% end %>

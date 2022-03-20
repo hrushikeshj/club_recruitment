@@ -1,0 +1,3 @@
+$('#modal-title').html("Application");
+$('#modal-body-content').html('<%= j render("show", application: @application) %>');
+$('#modal-footer-content').html('<%= j link_to "Edit", edit_application_path(@application), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');

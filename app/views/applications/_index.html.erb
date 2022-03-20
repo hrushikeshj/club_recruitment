@@ -1,0 +1,35 @@
+<table id="applications" class="table table-striped">
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Projects</th>
+    <th>Skills</th>
+    <th>Github link</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @applications&.each do |application| %>
+    <tr>
+      <td><%= application.user.name %></td>
+      <td><%= application.projects %></td>
+      <td><%= application.skills %></td>
+      <td><%= application.github_link %></td>
+      <td>
+        <div role="group" class="btn-group-sm btn-group">
+          <%= link_to 'Show', application_path(application), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>
+          <%= link_to 'Edit', edit_application_path(application), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-info" %>
+          <%= link_to 'Destroy', application_path(application), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#applications").DataTable();
+    });
+</script>
