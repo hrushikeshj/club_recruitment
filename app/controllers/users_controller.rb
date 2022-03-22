@@ -4,9 +4,15 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: %i[show edit update destroy]
 
+  # GET /clubs/:club_id/users
+  def club_users
+    @club = Club.find(params[:club_id])
+    @users = @club.users
+  end
+
   # GET /users
   def index
-    @users = User.all
+    @users = User.all.includes(:club, :roles)
   end
 
   # GET /users/1

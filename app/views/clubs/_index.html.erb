@@ -3,6 +3,7 @@
   <tr>
     <th>Name</th>
     <th>Info</th>
+    <th>Members</th>
     <th></th>
   </tr>
   </thead>
@@ -12,6 +13,7 @@
     <tr>
       <td><%= club.name %></td>
       <td><%= club.info %></td>
+      <td><%= link_to 'Members', club_users_path(club, format: :js), remote: true, data: {toggle: "modal", target: "#ajax-modal"}, class: "btn btn-info" %></td>
       <td>
         <div role="group" class="btn-group-sm btn-group">
           <%= link_to 'Show', club, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>

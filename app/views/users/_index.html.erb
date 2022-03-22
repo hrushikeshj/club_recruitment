@@ -16,7 +16,7 @@
       <td><%= user.name %></td>
       <td><%= user.roll_no %></td>
       <td><%= user.email %></td>
-      <td><%= user.club_id %></td>
+      <td><%= user.club&.name || 'N/A' %></td>
       <td>
         <%= render partial: 'roles/badge', collection: user.roles, as: :role %>
       </td>

@@ -7,39 +7,24 @@
     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
 </div>
--->
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-light side-bar-n" style="height: 100vh" >
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-          Home
-        </a>
-      </li>
-      <li>
+
+<li>
         <a href="#" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
           Dashboard
         </a>
       </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-          Orders
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-          Products
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-          Customers
-        </a>
-      </li>
+-->
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light side-bar-n" style="height: 100vh" >
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item"><%= sidebar_link 'Admin', admin_applications_path %></li>
+      <li><%= sidebar_link 'Users', users_path %></li>
+      <li><%= sidebar_link 'Roles', admin_roles_path	 %></li>
+      <li><%= sidebar_link 'Clubs', clubs_path	 %></li>
+      <% if current_user %>
+        <li><%= sidebar_link 'Application', user_applications_path(current_user) %></li>
+      <% end %>
+      <li><%= sidebar_link 'All Applications', admin_root_path %></li>
     </ul>
     <hr>
     <div class="dropdown">

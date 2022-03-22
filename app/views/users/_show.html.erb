@@ -17,6 +17,6 @@
 
 <p>
   <strong>Club:</strong>
-  <%= @user.club_id %>
+  <%= @user.club&.name || 'N/A' %>
 </p>
 

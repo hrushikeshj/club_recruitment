@@ -69,6 +69,8 @@
         const $target = $(target);
         $target.modal('show');
       });
+
+      $(`#sidebar a[href="${window.location.pathname}"]`).addClass('active');
     });
 
     function toggle(){

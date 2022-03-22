@@ -1,0 +1,3 @@
+$('#modal-title').html("Users - <%= @club.name %>");
+$('#modal-body-content').html('<%= j render("index", users: @users) %>');
+$('#modal-footer-content').html('');
