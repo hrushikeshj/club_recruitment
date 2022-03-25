@@ -1,8 +1,0 @@
-$('#modal-title').html("<%= singular_table_name.titleize %>");
-$('#modal-body-content').html('<%%= j render("show", <%= singular_table_name %>: @<%= singular_table_name %>) %>');
-$('#modal-footer-content').html('<%%= j link_to "Edit" ,edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');
-
-
-<%% if @cued %>
-$.get("<%%= <%= plural_table_name %>_path(format: :js) %>", function () {});
-<%% end %>

@@ -1,3 +1,0 @@
-$('#modal-title').html("Edit <%= singular_table_name.titleize %>");
-$('#modal-body-content').html('<%%= j render("form", <%= singular_table_name %>: @<%= singular_table_name %>) %>');
-$('#modal-footer-content').html('<%%= j link_to "Back", <%= singular_table_name %>_path(@<%= singular_table_name %>), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');
