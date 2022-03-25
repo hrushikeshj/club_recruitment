@@ -1,24 +1,54 @@
-# README
+# Installing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Install yarn, nodejs and MySql
 
-Things you may want to cover:
+## Clone the repo
+```git
+git clone https://<your_username>@github.com/hrushikeshj/club_recruitment 
+```
+> cd into the folder club_recruitment 
 
-* Ruby version
+## Install rails
+```bash
+bundle
+```
 
-* System dependencies
+## Install npm package
+```
+yarn install
+```
 
-* Configuration
+### Update the database username and password
+File path: `config/database.yml`
+```yml
+...
+...
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <db_username>
+  password: <db_password>
+  socket: /var/run/mysqld/mysqld.sock
 
-* Database creation
+development:
+  <<: *default
+  database: club_recruitment_development
+...
+...
+```
+Replace `<db_username>` and `<db_password>`.
 
-* Database initialization
+### Migrate
+```bash
+rails db:create
+rails db:migrate
+```
 
-* How to run the test suite
+### Run rails
+```bash
+rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If everything went right you can vist the app at 
+[http://localhost:3000](http://localhost:3000/)
