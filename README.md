@@ -62,3 +62,8 @@ If everything went right you can vist the app at
   - [ ] Club Priority
   - [ ] Assigning marks
   - [ ] Selecting students
+
+# Sync repo
+```bash
+git pull origin
+```
