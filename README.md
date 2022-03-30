@@ -57,5 +57,8 @@ If everything went right you can vist the app at
 - [x] Login/Sign-up
 - [x] Scaffold User, Application, Role, ApplicationSubmission, Club
 - [ ] Authorization
-- [ ] Application
-- [ ] 
+- [ ] UI
+- [ ] Apply for clubs
+  - [ ] Club Priority
+  - [ ] Assigning marks
+  - [ ] Selecting students
