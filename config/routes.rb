@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get :users, to: 'users#club_users'
   end
 
+  resources :application_submissions
 
   get 'sign_up', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

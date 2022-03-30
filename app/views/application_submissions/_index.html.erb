@@ -1,0 +1,35 @@
+<table id="application_submissions" class="table table-striped">
+  <thead>
+  <tr>
+    <th>Preference no</th>
+    <th>Status</th>
+    <th>Marks</th>
+    <th>Selected</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @application_submissions.each do |application_submission| %>
+    <tr>
+      <td><%= application_submission.preference_no %></td>
+      <td><%= application_submission.status %></td>
+      <td><%= application_submission.marks %></td>
+      <td><%= application_submission.selected %></td>
+      <td>
+        <div role="group" class="btn-group-sm btn-group">
+          <%= link_to 'Show', application_submission, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>
+          <%= link_to 'Edit', edit_application_submission_path(application_submission), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-info" %>
+          <%= link_to 'Destroy', application_submission, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#application_submissions").DataTable();
+    });
+</script>

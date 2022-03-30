@@ -2,7 +2,7 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `roll_no` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
   `club_id` int(11) DEFAULT NULL,
   `password_digest` varchar(255) DEFAULT NULL,
   `created_at` datetime(6) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `clubs` (
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+);
 
 CREATE TABLE `applications` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

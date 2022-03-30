@@ -1,0 +1,22 @@
+<% content_for :title do %>Editing Application Submission
+<% end %>
+
+<div class="main-card mb-3 card mt-4">
+  <div class="card-header">
+    <div class="row">
+      <div class="card-header-title col-6">
+        EditingApplication Submissions
+      </div>
+
+      <div class="col-6">
+        <div role="group" class="btn-group-sm btn-group float-end">
+          <%= link_to 'Show', @application_submission, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <%= render 'form', application_submission: @application_submission %>
+  </div>
+</div>

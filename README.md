@@ -1,6 +1,6 @@
 # Installing
 
-Install yarn, nodejs and MySql
+Install ruby, yarn, nodejs and MySql
 
 ## Clone the repo
 ```git
@@ -52,3 +52,10 @@ rails s
 
 If everything went right you can vist the app at 
 [http://localhost:3000](http://localhost:3000/)
+
+# TODO
+- [x] Login/Sign-up
+- [x] Scaffold User, Application, Role, ApplicationSubmission, Club
+- [ ] Authorization
+- [ ] Application
+- [ ] 
