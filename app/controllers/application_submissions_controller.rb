@@ -22,6 +22,10 @@ class ApplicationSubmissionsController < ApplicationController
   # GET /application_submissions/1/edit
   def edit; end
 
+  def select_clubs
+    @clubs = Clubs.all
+  end
+
   # POST /application_submissions
   def create
     @application_submission = ApplicationSubmission.new(application_submission_params)
