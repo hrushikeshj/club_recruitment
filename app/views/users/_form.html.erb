@@ -28,5 +28,5 @@
     <%= form.collection_check_boxes(:role_ids, Role.all, :id, :name) %>
   <% end %>
 
-  <%= form.submit %>
+  <%= form.submit "Register", class: "btn btn-primary" %>
 <% end %>
