@@ -1,0 +1,26 @@
+<%= bootstrap_form_with(model: application_submission, local: false) do |form| %>
+  <% if application_submission.errors.any? %>
+    <div class="card">
+      <div class="card-header bg-danger text-white">
+        <%= pluralize(application_submission.errors.count, "error") %> prohibited this application_submission from being saved:
+      </div>
+
+      <div class="card-body">
+        <ul>
+          <% application_submission.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form.text_field :application_id, class: "input" %>
+  <%= form.text_field :club_id, class: "input" %>
+  <%= form.number_field :preference_no, class: "input" %>
+  <%= form.number_field :status, class: "input" %>
+  <%= form.text_field :marks, class: "input" %>
+  <%= form.check_box :selected, class: "input" %>
+
+  <%= form.submit %>
+<% end %>

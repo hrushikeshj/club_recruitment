@@ -14,10 +14,20 @@
       </div>
     </div>
   <% end %>
+  <%= form.text_field :applicants_name, value: application.user.name, disabled: true %>
+  <%= form.text_field :applicants_roll_no, label: 'Roll no', value: application.user.roll_no, disabled: true %>
+  <%= form.text_field :applicants_email, label: 'Email', value: application.user.email, disabled: true %>
+  <%= form.text_field :applicants_branch, label: 'Branch', value: application.user.branch.name, disabled: true %>
 
-  <%= form.rich_text_area :projects, class: "input" %>
+  
+  <%= form.rich_text_area :projects, row: 100, class: "input" %>
   <%= form.rich_text_area :skills, class: "input" %>
   <%= form.text_field :github_link, class: "input" %>
 
   <%= form.submit %>
 <% end %>
+<script>
+  $(document).ready(()=>{
+    $('trix-editor').css("min-height", "250px");
+  })
+</script>

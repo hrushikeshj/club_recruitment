@@ -19,7 +19,7 @@
   <%= form.text_field :roll_no, class: "input" %>
   <%= form.text_field :email, class: "input" %>
 
-  <%= form.select :club_id, Club.pluck(:name, :id), selected: user.club_id, prompt: '-Select-' %>
+  <%= form.select :branch_id, Branch.pluck(:name, :id), selected: user.branch_id, prompt: '-Select Branch-' %>
 
   <% if user.new_record? %>
     <%= form.password_field :password, required: true %>

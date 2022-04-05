@@ -22,7 +22,12 @@
       <li><%= sidebar_link 'Roles', admin_roles_path	 %></li>
       <li><%= sidebar_link 'Clubs', clubs_path	 %></li>
       <% if current_user %>
-        <li><%= sidebar_link 'Application', user_applications_path(current_user) %></li>
+        <li><%= sidebar_link 'Show Applications', user_applications_path(current_user) %></li>
+        <% if current_user.application # if application is created %>
+          <li><%= sidebar_link 'Fill Application', application_path(current_user.application) %></li>
+        <% else %>
+          <li><%= sidebar_link 'Fill Application', new_user_application_path(current_user) %></li>
+        <% end %>
       <% end %>
       <li><%= sidebar_link 'All Applications', admin_root_path %></li>
     </ul>
