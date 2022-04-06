@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_03_29_084030) do
 
-  create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
+  create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
     t.string "record_type", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_03_29_084030) do
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
-  create_table "active_admin_comments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_03_29_084030) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
-  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_03_29_084030) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -58,13 +58,13 @@ ActiveRecord::Schema.define(version: 2022_03_29_084030) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "application_submissions", charset: "utf8mb4", force: :cascade do |t|
+  create_table "application_submissions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "application_id", null: false
     t.bigint "club_id", null: false
     t.integer "preference_no"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_03_29_084030) do
     t.index ["club_id"], name: "index_application_submissions_on_club_id"
   end
 
-  create_table "applications", charset: "utf8mb4", force: :cascade do |t|
+  create_table "applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.text "projects"
     t.text "skills"
@@ -87,21 +87,21 @@ ActiveRecord::Schema.define(version: 2022_03_29_084030) do
     t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
-  create_table "branches", charset: "utf8mb4", force: :cascade do |t|
+  create_table "branches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clubs", charset: "utf8mb4", force: :cascade do |t|
+  create_table "clubs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "role_assignments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "role_assignments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -110,13 +110,13 @@ ActiveRecord::Schema.define(version: 2022_03_29_084030) do
     t.index ["user_id"], name: "index_role_assignments_on_user_id"
   end
 
-  create_table "roles", charset: "utf8mb4", force: :cascade do |t|
+  create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "roll_no"
     t.string "email"
