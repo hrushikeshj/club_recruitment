@@ -1,0 +1,13 @@
+<%= render 'shared/step', step_1: 'done', step_2: 'done', step_3: 'active' %>
+
+<div class="row justify-content-center">
+  <%= render 'preference', application_submissions: @application_submissions %>
+</div>
+
+<style>
+  #priority-list div{
+    border-radius: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-top: 4px;
+  }
+</style>

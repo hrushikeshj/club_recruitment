@@ -6,7 +6,18 @@ Rails.application.routes.draw do
   root "users#index"
 
   resources :users do
-    resources :applications, shallow: true #only: [:index, :new, :create]
+    resources :applications, shallow: true do#only: [:index, :new, :create]
+
+      #Eg - /applications/:application_id/application_submissions/new
+      resources :application_submissions, shallow: true do
+        collection do
+          get :edit_preference
+        end
+        member do
+          post :update_preference
+        end
+      end
+    end
   end
   # [:show, :edit, :update, :destroy]
 
@@ -14,8 +25,6 @@ Rails.application.routes.draw do
   resources :clubs do
     get :users, to: 'users#club_users'
   end
-
-  resources :application_submissions
 
   get 'sign_up', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

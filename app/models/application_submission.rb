@@ -9,6 +9,20 @@ class ApplicationSubmission < ApplicationRecord
   # application can submitted only once to one club
   validates :club_id, uniqueness: { scope: :application_id }
 
+  def self.update_preference(sub, new_pref_no)
+    submissions = ApplicationSubmission.where(application_id: sub.application_id)
+    if new_pref_no < sub.preference_no
+      ActiveRecord::Base.transaction do
+        submissions.where(preference_no: new_pref_no...sub.preference_no).update_all("preference_no = preference_no+1")
+        sub.update(preference_no: new_pref_no)
+      end
+    elsif new_pref_no > sub.preference_no
+      ActiveRecord::Base.transaction do
+        submissions.where(preference_no: (sub.preference_no+1)..new_pref_no).update_all("preference_no = preference_no-1")
+        sub.update(preference_no: new_pref_no)
+      end
+    end
+  end
 
   private
 

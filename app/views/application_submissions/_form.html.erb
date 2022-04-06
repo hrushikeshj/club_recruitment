@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: application_submission, local: false) do |form| %>
+<%= bootstrap_form_with(model: [@application, application_submission], local: false) do |form| %>
   <% if application_submission.errors.any? %>
     <div class="card">
       <div class="card-header bg-danger text-white">
