@@ -24,7 +24,7 @@
       <% if current_user %>
         <li><%= sidebar_link 'Show Applications', user_applications_path(current_user) %></li>
         <% if current_user.application # if application is created %>
-          <li><%= sidebar_link 'Fill Application', application_path(current_user.application) %></li>
+          <li><%= sidebar_link 'Fill Application', edit_application_path(current_user.application) %></li>
         <% else %>
           <li><%= sidebar_link 'Fill Application', new_user_application_path(current_user) %></li>
         <% end %>

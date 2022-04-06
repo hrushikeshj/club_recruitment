@@ -1,0 +1,28 @@
+
+<%
+    step_1 ||= 'inactive'
+    step_2 ||= 'inactive'
+    step_3 ||= 'inactive'
+
+%>
+
+<div id="smartwizard" class="sw sw-justified sw-theme-dots">
+    <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link  <%= step_1 %>" href="https://github.com/hrushikeshj/club_recruitment">
+            <strong>Step 1</strong> <br>Fill Application
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= step_2 %> " href="#step-2">
+            <strong>Step 2</strong> <br>Apply to clubs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= step_3 %>" href="#step-3">
+            <strong>Step 3</strong> <br>Fill priority
+          </a>
+        </li>
+    </ul>
+</div>
+<link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
