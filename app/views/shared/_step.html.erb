@@ -12,6 +12,8 @@
     else
       step_2_url = select_clubs_application_application_submissions_path(current_user.application)
       step_3_url = edit_preference_application_application_submissions_path(current_user.application)
+
+      step_2 += ' done' if current_user.application_submissions.present?
     end
 
 %>
@@ -25,12 +27,12 @@
         </li>
         <li class="nav-item">
           <%= link_to step_2_url, class: "nav-link #{step_2}" do %>
-            <strong>Step 2</strong> <br>Apply to clubs
+            <strong>Step 2</strong> <br>Apply to Clubs
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to step_3_url, class: "nav-link #{step_3}" do %>
-            <strong>Step 3</strong> <br>Fill priority
+            <strong>Step 3</strong> <br>Fill Preference
           <% end %>
         </li>
     </ul>

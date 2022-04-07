@@ -59,7 +59,8 @@ If everything went right you can vist the app at
 - [ ] Authorization
 - [ ] UI
 - [ ] Apply for clubs
-  - [ ] Club Priority
+  - [x] Apply
+  - [x] Club Priority
   - [ ] Assigning marks
   - [ ] Selecting students
 
@@ -67,3 +68,4 @@ If everything went right you can vist the app at
 ```bash
 git pull origin
 ```
+Run ```yarn install``` if you get any javascript error.

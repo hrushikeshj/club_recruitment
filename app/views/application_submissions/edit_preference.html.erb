@@ -1,14 +1,20 @@
 <%= render 'shared/step', step_1: 'done', step_2: 'done', step_3: 'active' %>
 
-<div class="row justify-content-center">
-  <%= render 'preference', application_submissions: @application_submissions %>
-</div>
-
 <% if @application_submissions.empty? %>
   <div class="text-center">
     Not applied to any club!!!
   </div>
+<% else %>
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>Drag-and-drop list to update preference</p>
+    </blockquote>
+  </figure> 
 <% end %>
+
+<div class="row justify-content-center">
+  <%= render 'preference', application_submissions: @application_submissions %>
+</div>
 
 <style>
   #priority-list div{

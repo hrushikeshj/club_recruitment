@@ -1,3 +1,18 @@
 @import "bootstrap/scss/bootstrap";
 @import 'trix/dist/trix.css';
 @import 'actiontext';
+
+@import "bootstrap-icons/font/bootstrap-icons";
+@font-face {
+  font-family: "bootstrap-icons";
+  src: font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff2") format("woff2"),
+    font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
+}
+
+.card img{
+  transition: all 150ms;
+  box-shadow: 1px 24px 24px -14px #bebebe !important;
+}
+.card img:hover{
+  box-shadow: 1px 24px 24px -14px #575b5f !important;
+}
