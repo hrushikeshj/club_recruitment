@@ -20,7 +20,7 @@
   <%= form.text_field :applicants_branch, label: 'Branch', value: application.user.branch&.name, disabled: true %>
 
   
-  <%= form.rich_text_area :projects, row: 100, class: "input" %>
+  <%= form.rich_text_area :projects, help: 'Projets you have worked on', class: "input" %>
   <%= form.rich_text_area :skills, class: "input" %>
   <%= form.text_field :github_link, class: "input" %>
 
@@ -28,6 +28,6 @@
 <% end %>
 <script>
   $(document).ready(()=>{
-    $('trix-editor').css("min-height", "250px");
+    $('trix-editor').css("min-height", "220px");
   })
 </script>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :application_submissions, shallow: true do
         collection do
           get :edit_preference
+          get :select_clubs
         end
         member do
           post :update_preference

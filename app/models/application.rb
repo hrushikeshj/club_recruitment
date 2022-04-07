@@ -14,4 +14,10 @@ class Application < ApplicationRecord
     # for active admin
     "ID #{user.id}: #{user.name}'s application"
   end
+
+  def applied?(club_id)
+    @applied_clubs ||= application_submissions.pluck(:club_id)
+
+    @applied_clubs.include?(club_id)
+  end
 end

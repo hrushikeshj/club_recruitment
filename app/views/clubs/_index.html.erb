@@ -2,7 +2,8 @@
   <thead>
   <tr>
     <th>Name</th>
-    <th>Info</th>
+    <th>Short</th>
+    <th>Description</th>
     <th>Members</th>
     <th></th>
   </tr>
@@ -12,7 +13,8 @@
   <% @clubs.each do |club| %>
     <tr>
       <td><%= club.name %></td>
-      <td><%= club.info %></td>
+      <td><%= club.short_name %></td>
+      <td><%= club.description %></td>
       <td><%= link_to 'Members', club_users_path(club, format: :js), remote: true, data: {toggle: "modal", target: "#ajax-modal"}, class: "btn btn-info" %></td>
       <td>
         <div role="group" class="btn-group-sm btn-group">

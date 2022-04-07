@@ -1,6 +1,8 @@
 class ApplicationSubmission < ApplicationRecord
   belongs_to :application
   belongs_to :club
+  has_one :user, through: :application
+
   before_save :set_preference, if: :new_record?
 
   validates :club_id, presence: true
@@ -14,12 +16,12 @@ class ApplicationSubmission < ApplicationRecord
     if new_pref_no < sub.preference_no
       ActiveRecord::Base.transaction do
         submissions.where(preference_no: new_pref_no...sub.preference_no).update_all("preference_no = preference_no+1")
-        sub.update(preference_no: new_pref_no)
+        sub.update_attribute('preference_no', new_pref_no)
       end
     elsif new_pref_no > sub.preference_no
       ActiveRecord::Base.transaction do
         submissions.where(preference_no: (sub.preference_no+1)..new_pref_no).update_all("preference_no = preference_no-1")
-        sub.update(preference_no: new_pref_no)
+        sub.update_attribute('preference_no', new_pref_no)
       end
     end
   end

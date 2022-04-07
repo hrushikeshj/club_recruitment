@@ -3,26 +3,48 @@
     step_1 ||= 'inactive'
     step_2 ||= 'inactive'
     step_3 ||= 'inactive'
+    step_2_url = ''
+    step_3_url = ''
+
+    if current_user.application.nil?
+      step_2 += ' dis-cus'
+      step_3 += ' dis-cus'
+    else
+      step_2_url = select_clubs_application_application_submissions_path(current_user.application)
+      step_3_url = edit_preference_application_application_submissions_path(current_user.application)
+
+      step_2 += ' done' if current_user.application_submissions.present?
+    end
 
 %>
 
 <div id="smartwizard" class="sw sw-justified sw-theme-dots">
     <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link  <%= step_1 %>" href="https://github.com/hrushikeshj/club_recruitment">
+          <%= link_to current_user_application_url, class: "nav-link #{step_1}", disabled: true do %>
             <strong>Step 1</strong> <br>Fill Application
-          </a>
+          <% end %>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%= step_2 %> " href="#step-2">
-            <strong>Step 2</strong> <br>Apply to clubs
-          </a>
+          <%= link_to step_2_url, class: "nav-link #{step_2}" do %>
+            <strong>Step 2</strong> <br>Apply to Clubs
+          <% end %>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%= step_3 %>" href="#step-3">
-            <strong>Step 3</strong> <br>Fill priority
-          </a>
+          <%= link_to step_3_url, class: "nav-link #{step_3}" do %>
+            <strong>Step 3</strong> <br>Fill Preference
+          <% end %>
         </li>
     </ul>
 </div>
 <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+
+<style>
+  #smartwizard a{
+    cursor: pointer;
+  }
+
+  #smartwizard .dis-cus{
+    cursor: not-allowed;
+  }
+</style>

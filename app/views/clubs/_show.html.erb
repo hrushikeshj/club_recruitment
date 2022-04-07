@@ -1,10 +1,30 @@
-<p>
-  <strong>Name:</strong>
-  <%= @club.name %>
-</p>
+<% if @club.cover_pic.attached? %>
+  <%= image_tag(@club.cover_pic, class: "cover-img") %>
+<% end %>
 
-<p>
-  <strong>Info:</strong>
-  <%= @club.info %>
-</p>
+  <h1 class="display-5 mt-4"><%= @club.name %></h1>
 
+
+  <br>
+  <p class="content">
+    
+    <%= @club.info %>
+  </p>
+
+<style>
+
+ .cover-img{
+   width:60%;
+   margin-left:10%;
+   box-shadow: 1px 24px 24px -14px #363b40 !important;
+ }
+
+ .content{
+   line-height: 1.8;    
+   font-size: 20px;
+   color: #363b40;
+ }
+ nav a:hover{
+    background-color: #00000011;
+ }
+</style>

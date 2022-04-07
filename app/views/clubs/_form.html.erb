@@ -16,7 +16,11 @@
   <% end %>
 
   <%= form.text_field :name, class: "input" %>
+  <%= form.text_field :short_name %>
+  <%= form.text_area :description %>
   <%= form.rich_text_area :info, class: "input" %>
+
+  <%= form.file_field :cover_pic %>
 
   <%= form.submit %>
 <% end %>

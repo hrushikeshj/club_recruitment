@@ -1,13 +1,35 @@
 <% content_for :title do %>Club Selection
 <% end %>
 
-<% @clubs.each do |club| %>
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+<%= render 'shared/step', step_1: 'done', step_2: 'active' %>
+
+<div class="row">
+  <% @clubs.each do |club| %>
+    <div class="col-sm-4 col-xs-6 mt-2">
+      <div class="card">
+        <% if club.cover_pic.attached? %>
+          <%= image_tag(club.cover_pic, class: 'card-img-top') %>
+        <% end %>
         <div class="card-body">
-            <h5 class="card-title"><%= club.name %></h5>
-            <p class="card-text"><%= club.info %></p>
-            <a href="#" class="btn btn-primary">Apply</a>
+          <h5 class="card-title"><%= club.name %></h5>
+          <p class="card-text"><%= club.description %></p>
+          <% if @application.applied?(club.id) %>
+              <%= link_to 'Applied', '#', class: "btn btn-success dis-cus", disabled: true %>
+          <% else %>
+            <span id="club-<%= club.id %>">
+              <%= link_to 'Apply', application_application_submissions_path(application_id: @application.id, club_id: club.id), class: 'btn btn-primary', method: :post, remote: true, data: {disable_with: 'Appling...'} %>
+            </span>
+          <% end %>
+            <%= link_to 'Info', club_path(club), class: 'btn btn-info', remote: true, data: {toggle: "modal", target: "#ajax-modal"} %>
         </div>
+      </div>
     </div>
-<% end %>
+  <% end %>
+</div>
+
+<style>
+  .card-img-top{
+    max-height: 300px;
+    object-fit: cover;
+  }
+</style>

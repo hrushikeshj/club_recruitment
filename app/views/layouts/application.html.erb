@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ClubRecruitment</title>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield(:title) %>
+      <% else %>
+        Club Recruitment
+      <% end %>
+    </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,7 +22,11 @@
   </head>
 
   <body>
-
+    <script>
+      function toggle(){
+        document.body.classList.toggle('sidenav-toggled');
+      }
+    </script>
     <%= render 'layouts/nav' %>
 
     <aside id="sidebar">
@@ -27,14 +37,16 @@
     <main id="main-body">
       <div class="container-fluid">
         <% if alert %>
-          <div class="alert alert-danger" role="alert">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <%= alert %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         <% end %>
 
         <% if notice %>
-          <div class="alert alert-success" role="alert">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
             <%= notice %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         <% end %>
         
@@ -73,9 +85,10 @@
       $(`#sidebar a[href="${window.location.pathname}"]`).addClass('active');
     });
 
-    function toggle(){
-      document.body.classList.toggle('sidenav-toggled');
-    }
+    $(".dis-cus").on("click", function(event){
+      event.preventDefault();
+    });
     </script>
+    
   </body>
 </html>

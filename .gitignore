@@ -37,3 +37,4 @@ yarn-debug.log*
 /lib/templates
 /lib/rails
 .gitignore
+/config/.database.yml
