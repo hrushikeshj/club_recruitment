@@ -39,7 +39,7 @@ class ApplicationsController < ApplicationController
 
     respond_to do |format|
       if @application.save
-        format.html { redirect_to @application, notice: 'Application was successfully created.' }
+        format.html { redirect_to select_clubs_application_application_submissions_path(@application), notice: 'Application was successfully created.' }
         format.json { render :show, status: :created, location: @application }
         format.js do
           @cued = true
@@ -57,7 +57,7 @@ class ApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @application.update(application_params)
-        format.html { redirect_to @application, notice: 'Application was successfully updated.' }
+        format.html { redirect_to select_clubs_application_application_submissions_path(@application), notice: 'Application was successfully updated.' }
         format.json { render :show, status: :ok, location: @application }
         format.js do
           @cued = true

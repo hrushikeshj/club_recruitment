@@ -1,6 +1,8 @@
 class ApplicationSubmission < ApplicationRecord
   belongs_to :application
   belongs_to :club
+  has_one :user, through: :application
+
   before_save :set_preference, if: :new_record?
 
   validates :club_id, presence: true
