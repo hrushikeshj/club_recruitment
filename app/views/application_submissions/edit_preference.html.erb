@@ -4,10 +4,17 @@
   <%= render 'preference', application_submissions: @application_submissions %>
 </div>
 
+<% if @application_submissions.empty? %>
+  <div class="text-center">
+    Not applied to any club!!!
+  </div>
+<% end %>
+
 <style>
   #priority-list div{
     border-radius: 0px;
     border: 1px solid rgba(0, 0, 0, 0.125);
     margin-top: 4px;
+    cursor: -webkit-grabbing;
   }
 </style>

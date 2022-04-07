@@ -4,13 +4,13 @@ import { get, post, put, patch, destroy } from '@rails/request.js'
 
 export default class extends Controller {
   connect() {
-    console.log("pri")
-    var sortable = Sortable.create(this.element, {
+    console.log("pre-connect")
+    this.sortable = Sortable.create(this.element, {
       onUpdate: (evt)=> {
+        this.sortable.option("disabled", true)
         this.update_preference(evt.item.dataset.url, evt.newIndex+1)
       }
     });
-    
   }
 
   async update_preference(url, new_pre){
@@ -24,5 +24,6 @@ export default class extends Controller {
       this.element.parentElement.innerHTML = pref_list_html
     }
 
+    this.sortable.option("disabled", false)
   }
 }

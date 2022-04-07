@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one :application, dependent: :destroy
   belongs_to :branch, optional: true
 
+  has_many :application_submissions, through: :application
+
   accepts_nested_attributes_for :role_assignment
 
   validates :email, presence: true, uniqueness: true

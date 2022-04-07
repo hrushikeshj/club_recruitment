@@ -7,10 +7,6 @@ class ApplicationsController < ApplicationController
 
   respond_to :js, :html, :json
 
-  def submit_application
-    @clubs = Clubs.all
-  end
-
   # GET /users/:user_id/applications
   def index
     @applications = @user.application
@@ -23,7 +19,7 @@ class ApplicationsController < ApplicationController
   # GET /users/:user_id/applications/new
   def new
     ## .build_application will delete ans application if it alredy exist
-    
+
     if @user.application.nil? 
       @application = @user.build_application
     else

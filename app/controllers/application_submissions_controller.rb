@@ -2,11 +2,12 @@
 
 class ApplicationSubmissionsController < ApplicationController
 
-  before_action :set_application, only: %i[index new create edit_preference]
+  before_action :set_application, only: %i[index new create edit_preference select_clubs]
   before_action :set_application_submission, only: %i[show edit update destroy update_preference]
 
   respond_to :js, :html, :json
 
+  # GET /applications/:application_id/application_submissions/edit_preference
   def edit_preference
     @application_submissions = @application.application_submissions
   end
@@ -20,6 +21,11 @@ class ApplicationSubmissionsController < ApplicationController
 
     # TODO: loader gif
     render inline: "<%= render 'preference', application_submissions: @subs %>"
+  end
+
+  # GET /applications/:application_id/application_submissions/select_clubs
+  def select_clubs
+    @clubs = Club.all
   end
 
   # GET /application_submissions
@@ -38,25 +44,18 @@ class ApplicationSubmissionsController < ApplicationController
   # GET /application_submissions/1/edit
   def edit; end
 
-  def select_clubs
-    @clubs = Clubs.all
-  end
-
   # POST /application_submissions
   def create
-    @application_submission = @application.application_submissions.new(application_submission_params)
+    @application_submission = @application.application_submissions.new(club_id: params[:club_id])
 
     respond_to do |format|
       if @application_submission.save
         format.html { redirect_to @application_submission, notice: 'Application submission was successfully created.' }
         format.json { render :show, status: :created, location: @application_submission }
-        format.js do
-          @cued = true
-          render :show, status: :created, location: @application_submission
-        end
+        format.js
       else
         format.html { render :new }
-        format.js { render :new }
+        format.js
         format.json { render json: @application_submission.errors, status: :unprocessable_entity }
       end
     end
