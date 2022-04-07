@@ -15,9 +15,10 @@
     </div>
   <% end %>
 
-  <%= form.text_field :application_id, class: "input" %>
-  <%= form.text_field :club_id, class: "input" %>
-  <%= form.number_field :preference_no, class: "input" %>
+  <%= render 'show' %>
+  <%= form.hidden_field :application_id, class: "input" %>
+  <%= form.hidden_field :club_id, class: "input" %>
+  <%= form.hidden_field :preference_no, class: "input" %>
   <%= form.number_field :status, class: "input" %>
   <%= form.text_field :marks, class: "input" %>
   <%= form.check_box :selected, class: "input" %>
