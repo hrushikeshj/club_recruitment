@@ -1,1 +1,2 @@
-$("#table_div").html("<%= j render "index" %>");
+$("<%= params[:ajaxtarget] || "#table_div" %>").html("<%= j render "index" %>");
+$('#modal-title').html("Submissions");

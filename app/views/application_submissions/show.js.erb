@@ -3,6 +3,3 @@ $('#modal-body-content').html('<%= j render("show", application_submission: @app
 $('#modal-footer-content').html('<%= j link_to "Edit" ,edit_application_submission_path(@application_submission), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');
 
 
-<% if @cued %>
-$.get("<%= application_submissions_path(format: :js) %>", function () {});
-<% end %>

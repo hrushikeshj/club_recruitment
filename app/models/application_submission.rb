@@ -11,6 +11,11 @@ class ApplicationSubmission < ApplicationRecord
   # application can submitted only once to one club
   validates :club_id, uniqueness: { scope: :application_id }
 
+  enum status: {
+    "pending": 0,
+    "short_list": 1
+  }
+
   def self.update_preference(sub, new_pref_no)
     submissions = ApplicationSubmission.where(application_id: sub.application_id)
     if new_pref_no < sub.preference_no

@@ -4,6 +4,7 @@
     <th>Name</th>
     <th>Short</th>
     <th>Description</th>
+    <th>Submissions</th>
     <th>Members</th>
     <th></th>
   </tr>
@@ -15,6 +16,7 @@
       <td><%= club.name %></td>
       <td><%= club.short_name %></td>
       <td><%= club.description %></td>
+      <td><%= link_to 'Applications', club_application_submissions_path(club, format: :js, ajaxtarget: "#modal-body-content"), remote: true, data: {toggle: "modal", target: "#ajax-modal"}, class: "btn btn-success" %></td>
       <td><%= link_to 'Members', club_users_path(club, format: :js), remote: true, data: {toggle: "modal", target: "#ajax-modal"}, class: "btn btn-info" %></td>
       <td>
         <div role="group" class="btn-group-sm btn-group">

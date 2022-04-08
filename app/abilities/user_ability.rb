@@ -2,6 +2,6 @@ class UserAbility
   include CanCan::Ability
 
   def initialize(user)
-    can :manage, :all
+    can :manage, User
   end
 end
