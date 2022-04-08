@@ -19,10 +19,10 @@
   <%= form.text_field :applicants_email, label: 'Email', value: application.user.email, disabled: true %>
   <%= form.text_field :applicants_branch, label: 'Branch', value: application.user.branch&.name, disabled: true %>
 
-  
+
   <%= form.rich_text_area :projects, help: 'Projets you have worked on', class: "input" %>
-  <%= form.rich_text_area :skills, class: "input" %>
-  <%= form.text_field :github_link, class: "input" %>
+  <%= form.rich_text_area :skills, class: "input", required: true %>
+  <%= form.text_field :github_link, class: "input", required: true %>
 
   <%= form.submit %>
 <% end %>

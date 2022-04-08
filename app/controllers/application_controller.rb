@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    @current_ability ||= UserAbility.new(current_user)
+    @current_ability ||= UserAbility.new(current_user).merge(ApplicationAbility.new(current_user))
     p @current_ability 
   end
 end

@@ -5,13 +5,7 @@
   <div class="card-header">
     <div class="row">
       <div class="card-header-title col-6">
-        Application Submissions
-      </div>
-
-      <div class="col-6">
-        <div role="group" class="btn-group-sm btn-group float-end">
-          <%= link_to 'New Application Submission', new_application_application_submission_path(@application), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary btn-xs" %>
-        </div>
+        Submissions - <%= @club.short_name %>
       </div>
     </div>
     

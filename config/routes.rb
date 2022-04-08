@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :clubs do
     get :users, to: 'users#club_users'
+    get :application_submissions, to: 'application_submissions#index'
   end
 
   get 'sign_up', to: 'users#new', as: 'signup'

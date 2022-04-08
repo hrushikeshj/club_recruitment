@@ -2,14 +2,14 @@
 
 class ApplicationSubmissionsController < ApplicationController
 
-  before_action :set_application, only: %i[index new create edit_preference select_clubs]
+  before_action :set_application, only: %i[new create edit_preference select_clubs]
   before_action :set_application_submission, only: %i[show edit update destroy update_preference]
 
   respond_to :js, :html, :json
 
   # GET /applications/:application_id/application_submissions/edit_preference
   def edit_preference
-    @application_submissions = @application.application_submissions
+    @application_submissions = @application.application_submissions.includes(:club)
   end
 
   # POST /application_submissions/:id/update_preference
@@ -28,9 +28,10 @@ class ApplicationSubmissionsController < ApplicationController
     @clubs = Club.all
   end
 
-  # GET /application_submissions
+  # GET /clubs/:club_id/application_submissions
   def index
-    @application_submissions = ApplicationSubmission.all
+    @club = Club.find(params[:club_id])
+    @application_submissions = @club.application_submissions.includes(:user)
   end
 
   # GET /application_submissions/1

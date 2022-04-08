@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationsController < ApplicationController
-
   before_action :set_user, only: %i[index new create]
   before_action :set_application, only: %i[show edit update destroy submit_application]
+
+  authorize_resource
 
   respond_to :js, :html, :json
 
