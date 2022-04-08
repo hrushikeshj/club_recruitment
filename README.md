@@ -63,6 +63,7 @@ If everything went right you can vist the app at
   - [x] Club Priority
   - [ ] Assigning marks
   - [ ] Selecting students
+- [x] Club Dashboard
 
 # Sync repo
 ```bash
