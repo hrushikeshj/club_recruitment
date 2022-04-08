@@ -24,6 +24,9 @@
       <% if can? :admin, User %>
         <li><%= sidebar_link 'Show Applications', all_application_path %></li>
       <% end %>
+      <% if current_user&.club_id %>
+        <li><%= sidebar_link 'Club Dashboard', dashboard_club_path(id: current_user.club_id) %></li>
+      <% end %>
 
       <% if current_user %>
         <% if current_user.application # if application is created %>

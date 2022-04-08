@@ -6,7 +6,10 @@
     <div class="card-body">
       <h5 class="card-title"><%= club.name %></h5>
       <p class="card-text"><%= club.description %></p>
-        <%= link_to 'Info', club_path(club), class: 'btn btn-info', remote: true, data: {toggle: "modal", target: "#ajax-modal"} %>
+      <% if block_given? %>
+        <%= yield %>
+      <% end %>
+      <%= link_to 'Info', club_path(club), class: 'btn btn-info', remote: true, data: {toggle: "modal", target: "#ajax-modal"} %>
     </div>
   </div>
 </div>
