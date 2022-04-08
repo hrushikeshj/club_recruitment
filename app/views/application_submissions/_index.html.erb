@@ -1,6 +1,7 @@
 <table id="application_submissions" class="table table-striped">
   <thead>
   <tr>
+    <th>Name</th>
     <th>Preference no</th>
     <th>Status</th>
     <th>Marks</th>
@@ -10,8 +11,9 @@
   </thead>
 
   <tbody>
-  <% @application_submissions.each do |application_submission| %>
+  <% application_submissions.each do |application_submission| %>
     <tr>
+      <td><%= application_submission.user.name %></td>
       <td><%= application_submission.preference_no %></td>
       <td><%= application_submission.status %></td>
       <td><%= application_submission.marks %></td>

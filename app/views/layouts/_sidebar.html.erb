@@ -21,8 +21,11 @@
       <li><%= sidebar_link 'Users', users_path %></li>
       <li><%= sidebar_link 'Roles', admin_roles_path	 %></li>
       <li><%= sidebar_link 'Clubs', clubs_path	 %></li>
+      <% if can? :admin, User %>
+        <li><%= sidebar_link 'Show Applications', all_application_path %></li>
+      <% end %>
+
       <% if current_user %>
-        <li><%= sidebar_link 'Show Applications', user_applications_path(current_user) %></li>
         <% if current_user.application # if application is created %>
           <li><%= sidebar_link 'Fill Application', edit_application_path(current_user.application) %></li>
         <% else %>

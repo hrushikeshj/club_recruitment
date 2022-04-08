@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :role_assignment
 
+  after_save :assign_default_role
+
   validates :email, presence: true, uniqueness: true
 
   def has_role?(role_sym)
@@ -24,4 +26,13 @@ class User < ApplicationRecord
   def assign_role(role_id)
     role_assignment.create(role_id: role_id)
   end
+
+  private
+
+  def assign_default_role
+    return if roles.present?
+
+    self.assign_role(1)
+  end
+
 end

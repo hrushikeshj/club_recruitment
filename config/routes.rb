@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :applications, shallow: true do#only: [:index, :new, :create]
-
       #Eg - /applications/:application_id/application_submissions/new
       resources :application_submissions, shallow: true do
         collection do
@@ -24,6 +23,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :clubs do
+    member do
+      get :dashboard
+    end
     get :users, to: 'users#club_users'
     get :application_submissions, to: 'application_submissions#index'
   end
@@ -31,4 +33,5 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
+  get :all_application, to: 'applications#index'
 end

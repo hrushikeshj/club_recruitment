@@ -1,5 +1,5 @@
 <% content_for :title do %> <%= @club.short_name %>
 <% end %>
 
-<%= render "show" %>
+<%= render "show", club: @club %>
 <%= link_to 'Edit', edit_club_path(@club), class: "btn btn-warning" %>

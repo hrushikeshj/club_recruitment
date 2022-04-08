@@ -1,14 +1,14 @@
-<% if @club.cover_pic.attached? %>
-  <%= image_tag(@club.cover_pic, class: "cover-img") %>
+<% if club.cover_pic.attached? %>
+  <%= image_tag(club.cover_pic, class: "cover-img") %>
 <% end %>
 
-  <h1 class="display-5 mt-4"><%= @club.name %></h1>
+  <h1 class="display-5 mt-4"><%= club.name %></h1>
 
 
   <br>
   <p class="content">
     
-    <%= @club.info %>
+    <%= club.info %>
   </p>
 
 <style>

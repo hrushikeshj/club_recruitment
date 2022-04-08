@@ -2,13 +2,20 @@
 
 class ClubsController < ApplicationController
 
-  before_action :set_club, only: %i[show edit update destroy]
+  before_action :set_club, only: %i[show edit update destroy dashboard]
 
   respond_to :js, :html, :json
+
+  # GET /clubs/:id/dashboard
+  def dashboard
+    @submissions = @club.application_submissions.includes(:user)
+  end
 
   # GET /clubs
   def index
     @clubs = Club.all
+
+    render 'show_all' unless current_user&.admin?
   end
 
   # GET /clubs/1

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  authorize_resource
-
   before_action :set_user, only: %i[show edit update destroy]
+
+  authorize_resource
 
   # GET /clubs/:club_id/users
   def club_users
