@@ -56,8 +56,8 @@ If everything went right you can vist the app at
 # TODO
 - [x] Login/Sign-up
 - [x] Scaffold User, Application, Role, ApplicationSubmission, Club
-- [ ] Authorization
-- [ ] UI
+- [x] Authorization
+- [x] UI
 - [ ] Apply for clubs
   - [x] Apply
   - [x] Club Priority
