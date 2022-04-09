@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: club, local: false) do |form| %>
+<%= bootstrap_form_with(model: club, local: !request.format.js?) do |form| %>
   <% if club.errors.any? %>
     <div class="card">
       <div class="card-header bg-danger text-white">

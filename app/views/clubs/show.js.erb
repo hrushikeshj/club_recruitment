@@ -1,7 +1,8 @@
 $('#modal-title').html("<%= @club.short_name %>");
 $('#modal-body-content').html('<%= j render("show", club: @club) %>');
-$('#modal-footer-content').html('<%= j link_to "Edit" ,edit_club_path(@club), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');
-
+<% if can? :edit, Club %>
+  $('#modal-footer-content').html('<%= j link_to "Edit" ,edit_club_path(@club), format: :js, remote: true , class: "mb-2 mr-2 btn btn-pill btn-hover-shine btn-dark" %>');
+<% end %>
 
 <% if @cued %>
 $.get("<%= clubs_path(format: :js) %>", function () {});

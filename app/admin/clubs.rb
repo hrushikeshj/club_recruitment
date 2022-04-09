@@ -5,12 +5,12 @@ ActiveAdmin.register Club do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :info
+  permit_params :name, :info, :short_name, :description
   #
   # or
   #
   # permit_params do
-  #   permitted = [:name, :info]
+  #   permitted = [:name, :info, :short_name, :description]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

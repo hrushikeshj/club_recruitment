@@ -1,14 +1,15 @@
-class RoleAbility
+class ClubAbility
   include CanCan::Ability
 
   def initialize(user)
+    can :read, Club # TODO: split
+
     return unless user.present?
 
-    can :read, Role # TODO: split
-    can :update, Role, id: user.club_id
+    can :update, Club, id: user.club_id
 
     return unless user.admin?
 
-    can :manage, Role
+    can :manage, Club
   end
 end

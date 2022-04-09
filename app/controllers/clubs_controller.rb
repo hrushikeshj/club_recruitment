@@ -4,6 +4,8 @@ class ClubsController < ApplicationController
 
   before_action :set_club, only: %i[show edit update destroy dashboard]
 
+  authorize_resource
+
   respond_to :js, :html, :json
 
   # GET /clubs/:id/dashboard

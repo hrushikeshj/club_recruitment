@@ -2,4 +2,7 @@
 <% end %>
 
 <%= render "show", club: @club %>
-<%= link_to 'Edit', edit_club_path(@club), class: "btn btn-warning" %>
+
+<% if can? :edit, Club %>
+  <%= link_to 'Edit', edit_club_path(@club), class: "btn btn-warning" %>
+<% end %>

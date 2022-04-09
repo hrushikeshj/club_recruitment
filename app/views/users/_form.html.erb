@@ -20,13 +20,15 @@
   <%= form.text_field :email, class: "input" %>
 
   <%= form.select :branch_id, Branch.pluck(:name, :id), selected: user.branch_id, prompt: '-Select Branch-' %>
-  <%= form.select :club_id, Club.pluck(:name, :id), selected: user.club_id, prompt: '-Select-' %>
+
+  <% if can? :admin, User %>
+    <%= form.select :club_id, Club.pluck(:name, :id), selected: user.club_id, prompt: '-Select-' %>
+    <%= form.collection_check_boxes(:role_ids, Role.all, :id, :name) %>
+  <% end %>
 
   <% if user.new_record? %>
     <%= form.password_field :password, required: true %>
     <%= form.password_field :password_confirmation %>
-  <% else %>
-    <%= form.collection_check_boxes(:role_ids, Role.all, :id, :name) %>
   <% end %>
 
   <%= form.submit "Register", class: "btn btn-primary" %>
