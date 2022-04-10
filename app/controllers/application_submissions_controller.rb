@@ -17,7 +17,7 @@ class ApplicationSubmissionsController < ApplicationController
     ApplicationSubmission.update_preference(@application_submission, params[:new_pref])
 
     app = @application_submission.application
-    @subs = app.application_submissions
+    @subs = app.application_submissions.includes(:club)
 
     # TODO: loader gif
     render inline: "<%= render 'preference', application_submissions: @subs %>"

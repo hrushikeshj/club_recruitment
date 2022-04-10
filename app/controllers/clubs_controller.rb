@@ -17,7 +17,7 @@ class ClubsController < ApplicationController
   def index
     @clubs = Club.all
 
-    render 'show_all' unless current_user&.admin?
+    render 'show_all' if params[:display] == 'card' || !current_user&.admin?
   end
 
   # GET /clubs/1
