@@ -14,7 +14,7 @@
 
     <%= stylesheet_link_tag 'new_app', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!---
+    <!--
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     -->
@@ -55,6 +55,21 @@
         <%= yield %>
 
       </div>
+
+      <div id="loading-spinner">
+        <div class="sk-grid" id="gif">
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+          <div class="sk-grid-cube"></div>
+        </div>
+      </div>
+      
     </main>
 
     <!-- Modal -->
@@ -83,7 +98,14 @@
         $target.modal('show');
       });
 
+      // sidebar
       $(`#sidebar a[href="${window.location.pathname}"]`).addClass('active');
+
+      document.addEventListener("ajax:before", (event) =>{
+        $("#loading-spinner").show();
+        event.target.addEventListener("ajax:complete", ()=> $("#loading-spinner").hide())
+      });
+
     });
 
     $(".dis-cus").on("click", function(event){
