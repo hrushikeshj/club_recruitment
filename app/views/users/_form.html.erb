@@ -15,11 +15,24 @@
     </div>
   <% end %>
 
-  <%= form.text_field :name, class: "input" %>
-  <%= form.text_field :roll_no, class: "input" %>
-  <%= form.text_field :email, class: "input" %>
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <%= form.text_field :name, class: "input"%>
+    </div>
+    <div class="col-sm-6 col-12">
+      <%= form.text_field :roll_no, class: "input" %>
+    </div>
+  </div>
 
-  <%= form.select :branch_id, Branch.pluck(:name, :id), selected: user.branch_id, prompt: '-Select Branch-' %>
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <%= form.text_field :email, class: "input" %>
+    </div>
+    <div class="col-sm-6 col-12">
+      <%= form.select :branch_id, Branch.pluck(:name, :id), {prompt: '-Select Branch-'}, {selected: user.branch_id, class: 'form-select-lg'} %>
+    </div>
+  </div>  
+
 
   <% if can? :admin, User %>
     <%= form.select :club_id, Club.pluck(:name, :id), selected: user.club_id, prompt: '-Select-' %>
@@ -27,9 +40,17 @@
   <% end %>
 
   <% if user.new_record? %>
-    <%= form.password_field :password, required: true %>
-    <%= form.password_field :password_confirmation %>
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <%= form.password_field :password, required: true %>
+      </div>
+      <div class="col-sm-6 col-12">
+      <%= form.password_field :password_confirmation %>
+      </div>
+    </div>  
   <% end %>
 
-  <%= form.submit "Register", class: "btn btn-primary" %>
+  <div class="text-center">
+    <%= form.submit (user.new_record? ? "Register" : "Update"), class: "btn btn-primary" %>
+  </div>
 <% end %>
