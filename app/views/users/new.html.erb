@@ -1,24 +1,97 @@
 <% content_for :title do %>New User
 <% end %>
 
-<div class="main-card mb-3 card mt-4">
-  <div class="card-header">
-    <i class="header-icon pe-7s-menu icon-gradient bg-love-kiss" aria-hidden="true"></i>
-    <div class="card-header-title">
-      New User
-    </div>
-
-    <div class="btn-actions-pane-right">
-      <div role="group" class="btn-group-sm btn-group">
-        <%= link_to 'Back', :back, class: "btn btn-focus" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="card-body">
+<div class="">
+  <div class="wrap p-4">
+    <h3 class="mb-4">Log In</h3>
     <%= render 'form', user: @user %>
   </div>
 </div>
 <script>
   toggle()
 </script>
+
+<style>
+  body {
+    font-family: "Lato", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: normal;
+    background: #f8f9fd;
+    color: gray; }
+  .wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); 
+  }
+
+  h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Lato", Arial, sans-serif;
+  color: #000; }
+
+  .form-group {
+  position: relative;
+  z-index: 0;
+  margin-bottom: 20px !important; }
+  .form-group a {
+    color: gray; }
+
+.form-control {
+  height: 48px;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  border-radius: 5px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+  .form-control::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: rgba(0, 0, 0, 0.2) !important; }
+  .form-control::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(0, 0, 0, 0.2) !important; }
+  .form-control:-ms-input-placeholder {
+    /* IE 10+ */
+    color: rgba(0, 0, 0, 0.2) !important; }
+  .form-control:-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(0, 0, 0, 0.2) !important; }
+  .form-control:focus, .form-control:active {
+    outline: none !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #01d28e; }
+   
+   .btn {
+  cursor: pointer;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 15px;
+  padding: 10px 20px; }
+  .btn:hover, .btn:active, .btn:focus {
+    outline: none; }
+  .btn.btn-primary {
+    background: #01d28e !important;
+    border: 1px solid #01d28e !important;
+    color: #fff !important; }
+    .btn.btn-primary:hover {
+      border: 1px solid #01d28e;
+      background: transparent;
+      color: #01d28e; }
+    .btn.btn-primary.btn-outline-primary {
+      border: 1px solid #01d28e;
+      background: transparent;
+      color: #01d28e; }
+      .btn.btn-primary.btn-outline-primary:hover {
+        border: 1px solid transparent;
+        background: #01d28e;
+        color: #fff; }
+</style>
