@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
     @current_ability ||= UserAbility.new(current_user)
                           .merge(ApplicationAbility.new(current_user))
                           .merge(ClubAbility.new(current_user))
-    p @current_ability 
   end
 
   rescue_from CanCan::AccessDenied do |exception|
