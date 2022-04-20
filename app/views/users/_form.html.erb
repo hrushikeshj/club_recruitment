@@ -17,19 +17,19 @@
 
   <div class="row">
     <div class="col-sm-6 col-12">
-      <%= form.text_field :name, class: "input"%>
+      <%= form.text_field :name, required: true, class: "input"%>
     </div>
     <div class="col-sm-6 col-12">
-      <%= form.text_field :roll_no, class: "input" %>
+      <%= form.text_field :roll_no, required: true, class: "input" %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-6 col-12">
-      <%= form.text_field :email, class: "input" %>
+      <%= form.text_field :email, required: true, class: "input" %>
     </div>
     <div class="col-sm-6 col-12">
-      <%= form.select :branch_id, Branch.pluck(:name, :id), {prompt: '-Select Branch-'}, {selected: user.branch_id, class: 'form-select-lg'} %>
+      <%= form.select :branch_id, Branch.pluck(:name, :id), {prompt: '-Select Branch-'}, {selected: user.branch_id, class: 'form-select-lg', required: true} %>
     </div>
   </div>  
 
