@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :role_assignment, inverse_of: :user # should be role_assignments
+  has_many :role_assignment, inverse_of: :user, dependent: :destroy # should be role_assignments
   has_many :roles, through: :role_assignment
   belongs_to :club, optional: true
   has_one :application, dependent: :destroy
