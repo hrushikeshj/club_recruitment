@@ -16,6 +16,8 @@ class ApplicationSubmission < ApplicationRecord
     "short_list": 1
   }
 
+  scope :selected, -> { where(selected: true) }
+
   def self.update_preference(sub, new_pref_no)
     submissions = ApplicationSubmission.where(application_id: sub.application_id)
     if new_pref_no < sub.preference_no
