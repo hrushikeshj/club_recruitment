@@ -15,6 +15,7 @@
         </a>
       </li>
 -->
+
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light side-bar-n" style="height: 100%" >
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item"><%= sidebar_link 'Admin', admin_applications_path %></li>
@@ -27,13 +28,38 @@
       <% if current_user&.club_id %>
         <li><%= sidebar_link 'Club Dashboard', dashboard_club_path(id: current_user.club_id) %></li>
       <% end %>
-
       <% if current_user %>
-        <% if current_user.application # if application is created %>
-          <li><%= sidebar_link 'Fill Application', edit_application_path(current_user.application) %></li>
-        <% else %>
-          <li><%= sidebar_link 'Fill Application', new_user_application_path(current_user) %></li>
-        <% end %>
+        <%
+          step_2 ||= ''
+          step_3 ||= ''
+          step_2_url = ''
+          step_3_url = ''
+
+          if current_user.application.nil?
+            step_2 += 'dis-cus'
+            step_3 += 'dis-cus'
+          else
+            step_2_url = select_clubs_application_application_submissions_path(current_user.application)
+            step_3_url = edit_preference_application_application_submissions_path(current_user.application)
+          end
+
+        %>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#home-collapse" styple="width: 100%" aria-expanded="true">
+            Application
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <% if current_user.application # if application is created %>
+                <li><%= sidebar_link 'Fill Application', edit_application_path(current_user.application) %></li>
+              <% else %>
+                <li><%= sidebar_link 'Fill Application', new_user_application_path(current_user) %></li>
+              <% end %>
+              <li><%= sidebar_link 'Apply to Clubs', step_2_url, step_2 %></li>
+              <li><%= sidebar_link 'Fill Preference', step_3_url, step_2 %></li>
+            </ul>
+          </div>
+        </li>
       <% end %>
       <li><%= sidebar_link 'All Applications', admin_root_path %></li>
     </ul>
@@ -104,4 +130,52 @@ body {
 @media (min-width: 768px) {
 }
 
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+  border: 0;
+  margin-bottom: 6px;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: #d2f4ea;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+  font-size: 16px;
+  width: calc(200px);
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #d2f4ea;
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
 </style>

@@ -3,11 +3,15 @@
 
 <%= card do %>
   <%= render 'show', club: @club %>
-  <%= link_to 'Edit', edit_club_path(@club), class: 'btn btn-warning', remote: true, data: {toggle: "modal", target: "#ajax-modal"} %>
+  <%= link_to 'Edit', edit_club_path(@club), class: 'btn btn-warning' %>
 <% end %>
 
 <%= card _class: 'mt-4', title: 'Application Submissions' do %>
   <%= render 'application_submissions/index', application_submissions: @submissions %>
+<% end %>
+
+<%= card _class: 'mt-4', title: 'Selected Application Submissions' do %>
+  <%= render 'application_submissions/index', application_submissions: @club.selected_applications %>
 <% end %>
 
 <%= card _class: 'mt-4', title: 'Members' do %>

@@ -3,8 +3,8 @@ module ApplicationHelper
     render 'shared/card', **options, &block
   end
 
-  def sidebar_link(text, link)
-    link_to text, link, class: 'nav-link link-dark'
+  def sidebar_link(text, link, _class='')
+    link_to text, link, class: "nav-link link-dark #{_class}"
   end
 
   def current_user_application_url
