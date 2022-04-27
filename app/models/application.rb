@@ -3,7 +3,7 @@ class Application < ApplicationRecord
   has_rich_text :skills
 
   belongs_to :user
-  has_many :application_submissions
+  has_many :application_submissions, dependent: :destroy
 
   validates :projects, presence: true
   validates :skills, presence: true
@@ -12,7 +12,7 @@ class Application < ApplicationRecord
 
   def display_name
     # for active admin
-    "ID #{user.id}: #{user.name}'s application"
+    "User Id: #{user.id} | #{user.name}'s application"
   end
 
   def applied?(club_id)

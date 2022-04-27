@@ -1,0 +1,3 @@
+<%= card _class: 'mt-4', title: "Selected candidates - #{@club.name}" do %>
+  <%= render 'application_submissions/selected_index', application_submissions: @club.selected_applications %>
+<% end %>

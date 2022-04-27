@@ -1,0 +1,24 @@
+<table id="application_submissions" class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Roll No</th>
+    <th>Branch</th>
+    <th>Preference no</th>
+    <th>Marks</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% application_submissions.each do |application_submission| %>
+    <% app_sub = application_submission %>
+    <tr>
+      <td><%= application_submission.user.name %></td>
+      <td><%= application_submission.user.roll_no %></td>
+      <td><%= application_submission.user&.branch&.name %></td>
+      <td><%= application_submission.preference_no %></td>
+      <td><%= application_submission.marks %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

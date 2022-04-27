@@ -13,12 +13,19 @@ class ApplicationController < ActionController::Base
     @current_ability ||= UserAbility.new(current_user)
                           .merge(ApplicationAbility.new(current_user))
                           .merge(ClubAbility.new(current_user))
+                          .merge(ApplicationSubmissionAbility.new(current_user))
   end
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json { head :forbidden }
-      format.html { redirect_to login_path, alert: exception.message }
+      format.html do
+        if current_user
+          redirect_to applicant_dashboard_user_path(current_user), alert: exception.message
+        else
+          redirect_to login_path, alert: exception.message
+        end
+      end
       format.js { render 'shared/access_denied' }
     end
   end

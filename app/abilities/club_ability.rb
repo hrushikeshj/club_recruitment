@@ -8,6 +8,8 @@ class ClubAbility
 
     can :update, Club, id: user.club_id
 
+    can :council_dashboard, Club if user.has_role?(:council)
+
     return unless user.admin?
 
     can :manage, Club

@@ -65,7 +65,8 @@ class ApplicationSubmissionsController < ApplicationController
   # PATCH/PUT /application_submissions/1
   def update
     respond_to do |format|
-      if @application_submission.update(application_submission_params)
+      @application_submission.assign_attributes(application_submission_params)
+      if @application_submission.save(validate: false)
         format.html { redirect_to @application_submission, notice: 'Application submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @application_submission }
         format.js do

@@ -1,0 +1,124 @@
+<%
+    step_2 ||= ''
+    step_3 ||= ''
+    step_2_url = ''
+    step_3_url = ''
+
+    if @user.application.nil?
+      step_2 += 'dis-cus'
+      step_3 += 'dis-cus'
+    else
+      step_2_url = select_clubs_application_application_submissions_path(@user.application)
+      step_3_url = edit_preference_application_application_submissions_path(@user.application)
+    end
+
+    done = '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+          </svg>'
+    
+    pending = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hourglass-top" viewBox="0 0 16 16">
+              <path d="M2 14.5a.5.5 0 0 0 .5.5h11a.5.5 0 1 0 0-1h-1v-1a4.5 4.5 0 0 0-2.557-4.06c-.29-.139-.443-.377-.443-.59v-.7c0-.213.154-.451.443-.59A4.5 4.5 0 0 0 12.5 3V2h1a.5.5 0 0 0 0-1h-11a.5.5 0 0 0 0 1h1v1a4.5 4.5 0 0 0 2.557 4.06c.29.139.443.377.443.59v.7c0 .213-.154.451-.443.59A4.5 4.5 0 0 0 3.5 13v1h-1a.5.5 0 0 0-.5.5zm2.5-.5v-1a3.5 3.5 0 0 1 1.989-3.158c.533-.256 1.011-.79 1.011-1.491v-.702s.18.101.5.101.5-.1.5-.1v.7c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13v1h-7z"/>
+            </svg>'
+%>
+
+<div class="row mb-4">
+  <div class="col-12 col-sm-6">
+    <h5>Steps to complete</h5>
+    <div id="p" class="list-group ">
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-10">
+            <% if @user.application # if application is created %>
+              <%= link_to 'Fill Application', edit_application_path(@user.application) %>
+            <% else %>
+              <%= link_to 'Fill Application', new_user_application_path(@user) %>
+            <% end %>
+          </div>
+          <div class="col-2 s">
+            <% if @user.application # if application is created %>
+              <%= done.html_safe %>
+            <% else %>
+              <%= pending.html_safe %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-10">
+            <%= link_to 'Apply to Clubs', step_2_url, class: step_2 %>
+          </div>
+          <div class="col-2 s">
+            <% if @user.application_submissions.present? %>
+              <%= done.html_safe %>
+            <% else %>
+              <%= pending.html_safe %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-10">
+            <%= link_to 'Fill Preference', step_3_url, class: step_3 %>
+          </div>
+          <div class="col-2 s">
+            <% if @user.application_submissions.present? %>
+              <%= done.html_safe %>
+            <% else %>
+              <%= pending.html_safe %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <h5>Applied Clubs</h5>
+    <% if @user.application_submissions.present? %>
+      <%= render 'application_submissions/preference', application_submissions: @user.application_submissions, col: '' %>
+    <% else %>
+      Not yet applied to any club.
+    <% end %>
+  </div>
+</div>
+
+<% if @user.final_selected_club %>
+  <hr>
+  <div class="card-body text-center mt-4"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+      <h4>CONGRATULATIONS!</h4>
+      <p>You have been selected by <b><%= @user.final_selected_club.name %></b> based on your preference!</p>
+  </div>
+<% end %>
+<style>
+  #priority-list div{
+    border-radius: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-top: 4px;
+    cursor: -webkit-grabbing;
+  }
+  #p>div{
+    border-radius: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-top: 4px;
+  }
+  .list-group a{
+    text-decoration: none;
+    color: inherit;
+  }
+  .s{
+    font-size: 1.3rem;
+  }
+  .s svg{
+    width: 1em;
+    height: 1em;
+  }
+  .bi-check2-circle{
+    color: green;
+  }
+  .bi-hourglass-top{
+    color: #e3a212;
+  }
+</style>

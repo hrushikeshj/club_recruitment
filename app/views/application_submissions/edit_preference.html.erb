@@ -13,8 +13,14 @@
 <% end %>
 
 <div class="row justify-content-center">
-  <%= render 'preference', application_submissions: @application_submissions %>
+  <%= render 'preference', application_submissions: @application_submissions, col: 'col-12 col-sm-6' %>
 </div>
+
+<% if @application_submissions.present? %>
+  <div class="text-center mt-4">
+    <span class="badge bg-success">*</span> - Selected
+  </div>
+<% end %>
 
 <style>
   #priority-list div{

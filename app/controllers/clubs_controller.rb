@@ -2,15 +2,34 @@
 
 class ClubsController < ApplicationController
 
-  before_action :set_club, only: %i[show edit update destroy dashboard]
+  before_action :set_club, only: %i[show edit update destroy dashboard selected_applications selected_candidates]
 
   authorize_resource
 
   respond_to :js, :html, :json
 
+  # GET /clubs/:id/selected_candidates
+  def selected_candidates
+    render 'selected_candidates', layout: 'print'
+  end
+
+  # GET /all_selected_candidates
+  def all_selected_candidates
+    render 'all_selected_candidates', layout: 'print'
+  end
+
   # GET /clubs/:id/dashboard
   def dashboard
     @submissions = @club.application_submissions.includes(:user)
+  end
+
+  # GET /council_dashboard
+  def council_dashboard; end
+
+  # GET /clubs/:id/selected_applications
+  ## selected applications - top of the preference list
+  def selected_applications
+    @selected_applications = @club.selected_applications
   end
 
   # GET /clubs
@@ -55,7 +74,7 @@ class ClubsController < ApplicationController
   def update
     respond_to do |format|
       if @club.update(club_params)
-        format.html { redirect_to @club, notice: 'Club was successfully updated.' }
+        format.html { redirect_to dashboard_club_path, notice: 'Club was successfully updated.' }
         format.json { render :show, status: :ok, location: @club }
         format.js do
           @cued = true

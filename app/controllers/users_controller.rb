@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy applicant_dashboard]
 
   authorize_resource
+
+  # GET /users/1/applicant_dashboard
+  def applicant_dashboard
+  end
 
   # GET /clubs/:club_id/users
   def club_users
@@ -33,7 +37,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html do
+          if current_user
+            redirect_to @user, notice: 'User was successfully created.'
+          else
+            redirect_to login_path, notice: 'Account was successfully created.'
+          end
+        end
         format.json { render :show, status: :created, location: @user }
         format.js do
           @cued = true

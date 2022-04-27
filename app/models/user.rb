@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :role_assignment, inverse_of: :user # should be role_assignments
+  has_many :role_assignment, inverse_of: :user, dependent: :destroy # should be role_assignments
   has_many :roles, through: :role_assignment
   belongs_to :club, optional: true
   has_one :application, dependent: :destroy
@@ -15,8 +15,22 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
+  def final_selected_club
+    return nil if application_submissions.selected.empty?
+
+    application_submissions.selected.order(preference_no: :asc).first.club
+  end
+
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
+
+  def council?
+    has_role?(:council)
+  end
+
+  def applicant?
+    has_role?(:applicant)
   end
 
   def admin?
