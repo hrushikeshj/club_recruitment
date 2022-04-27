@@ -1,4 +1,5 @@
-<div id="priority-list" data-controller="preference" class="list-group col-12 col-sm-6">
+<% col ||= 'col-12 col-sm-6' %>
+<div id="priority-list" data-controller="preference" class="list-group <%= col %>">
   <% application_submissions.order(preference_no: :asc).each do |app_sub| %>
     <div class="list-group-item" data-url="<%= update_preference_application_submission_path(app_sub) %>">
       <span class="badge bg-<%= app_sub.selected ? 'success' : 'info' %> text-dark"><%= app_sub.preference_no %></span>  <%= app_sub.club.name %>

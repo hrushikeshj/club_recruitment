@@ -8,6 +8,8 @@ class UserAbility
     can :read, User # TODO: split
     can :update, User, id: user.id
 
+    can :applicant_dashboard, User, id: user.id
+
     return unless user.admin?
 
     can :admin, User

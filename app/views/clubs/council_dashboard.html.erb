@@ -4,7 +4,7 @@
 <%= link_to 'Print', all_selected_candidates_path, class: 'btn btn-info', target: '_blank' %>
 
 <% Club.all.each do |club| %>
-  <% if club.selected_applications.present? || 1 %>
+  <% if club.selected_applications.present? %>
     <%= card _class: 'mt-4', title: club.name do %>
       <%= render 'application_submissions/selected_index', application_submissions: club.selected_applications %>
     <% end %>

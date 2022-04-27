@@ -18,9 +18,12 @@
 
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light side-bar-n" style="height: 100%" >
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item"><%= sidebar_link 'Admin', admin_applications_path %></li>
-      <li><%= sidebar_link 'Users', users_path %></li>
-      <li><%= sidebar_link 'Roles', admin_roles_path	 %></li>
+      <% if can? :admin, User %>
+        <li class="nav-item"><%= sidebar_link 'Admin', admin_applications_path %></li>
+        <li><%= sidebar_link 'Users', users_path %></li>
+        <li><%= sidebar_link 'Roles', admin_roles_path	 %></li>
+        <li><%= sidebar_link 'All Applications', admin_root_path %></li>
+      <% end %>
       <li><%= sidebar_link 'Clubs', clubs_path	 %></li>
       <% if can? :council_dashboard, Club %>
         <li><%= sidebar_link 'Council Dashboard', council_dashboard_path %></li>
@@ -47,6 +50,9 @@
           end
 
         %>
+        <% if current_user.applicant? %>
+          <li><%= sidebar_link 'Dashboard', applicant_dashboard_user_path(current_user) %></li>
+        <% end %>
         <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#home-collapse" styple="width: 100%" aria-expanded="true">
             Application
@@ -64,7 +70,6 @@
           </div>
         </li>
       <% end %>
-      <li><%= sidebar_link 'All Applications', admin_root_path %></li>
     </ul>
     <hr>
     <% if current_user %>
