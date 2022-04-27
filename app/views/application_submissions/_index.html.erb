@@ -2,6 +2,7 @@
   <thead>
   <tr>
     <th>Name</th>
+    <th>Roll No</th>
     <th>Preference no</th>
     <th>Status</th>
     <th>Marks</th>
@@ -12,8 +13,10 @@
 
   <tbody>
   <% application_submissions.each do |application_submission| %>
+    <% app_sub = application_submission %>
     <tr>
       <td><%= application_submission.user.name %></td>
+      <td><%= application_submission.user.roll_no %></td>
       <td><%= application_submission.preference_no %></td>
       <td><%= application_submission.status %></td>
       <td><%= application_submission.marks %></td>
@@ -22,7 +25,9 @@
         <div role="group" class="btn-group-sm btn-group">
           <%= link_to 'Show', application_submission, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>
           <%= link_to 'Edit', edit_application_submission_path(application_submission), format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-info" %>
-          <%= link_to 'Destroy', application_submission, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+          <% if can? :destroy, ApplicationSubmission %>
+            <%= link_to 'Destroy', application_submission, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+          <% end %>
         </div>
       </td>
     </tr>

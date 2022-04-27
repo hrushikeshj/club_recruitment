@@ -11,7 +11,7 @@
 <% end %>
 
 <%= card _class: 'mt-4', title: 'Selected Application Submissions' do %>
-  <%= render 'application_submissions/index', application_submissions: @club.selected_applications %>
+  <%= render 'application_submissions/selected_index', application_submissions: @club.selected_applications %>
 <% end %>
 
 <%= card _class: 'mt-4', title: 'Members' do %>

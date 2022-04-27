@@ -18,6 +18,10 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    member do
+      get :applicant_dashboard
+    end
   end
   # [:show, :edit, :update, :destroy]
 
@@ -25,6 +29,7 @@ Rails.application.routes.draw do
   resources :clubs do
     member do
       get :dashboard
+      get :selected_candidates
     end
     get :users, to: 'users#club_users'
     get :application_submissions, to: 'application_submissions#index'
@@ -34,4 +39,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   get :all_application, to: 'applications#index'
+  get :council_dashboard, to: 'clubs#council_dashboard'
+  get :all_selected_candidates, to: 'clubs#all_selected_candidates'
 end
