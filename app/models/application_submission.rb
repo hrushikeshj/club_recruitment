@@ -13,7 +13,9 @@ class ApplicationSubmission < ApplicationRecord
 
   enum status: {
     "pending": 0,
-    "short_list": 1
+    "call_for_interview": 1,
+    "short_list": 2,
+    "selected": 3
   }
 
   scope :selected, -> { where(selected: true) }
@@ -33,6 +35,9 @@ class ApplicationSubmission < ApplicationRecord
     end
   end
 
+  def humanize_status
+    status&.humanize
+  end
   private
 
   # default preference_no

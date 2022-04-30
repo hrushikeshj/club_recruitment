@@ -1,31 +1,9 @@
 <%= render 'applications/show', application: @application_submission.application %>
-<p>
-  <strong>Name:</strong>
-  <%= @application_submission.user.name %>
-</p>
 
-<p>
-  <strong>Club:</strong>
-  <%= @application_submission.club.name %>
-</p>
-
-<p>
-  <strong>Preference no:</strong>
-  <%= @application_submission.preference_no %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @application_submission.status %>
-</p>
-
-<p>
-  <strong>Marks:</strong>
-  <%= @application_submission.marks %>
-</p>
-
-<p>
-  <strong>Selected:</strong>
-  <%= @application_submission.selected %>
-</p>
-
+<div class="mb-4">
+  <%= show_div 'Applied club:', @application_submission.club.name %>
+  <%= show_div 'Preference number:', @application_submission.preference_no %>
+  <%= show_div 'Status:', @application_submission.humanize_status %>
+  <%= show_div 'Marks:', @application_submission.marks? ? @application_submission.marks : '-' %>
+  <%= show_div 'Selected:', @application_submission.selected ? "Yes" : "No" %>
+</div>
