@@ -1,5 +1,49 @@
 <h1 class="display-6 text-center">Dashboard</h1>
 
+<div class="mb-3 card card-dash mt-4">
+   <div class="no-gutters row">
+      <div class="col-sm-6 col-md-4 col-xl-4">
+         <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+            <div class="icon-wrapper rounded-circle">
+               <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+               <i class="bi bi-people"></i>
+            </div>
+            <div class="widget-chart-content">
+               <div class="widget-subheading">Users</div>
+               <div class="widget-numbers"><%= User.count %></div>
+
+            </div>
+         </div>
+         <div class="divider m-0 d-md-none d-sm-block"></div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-xl-4">
+         <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+            <div class="icon-wrapper rounded-circle">
+               <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
+               <i class="bi bi-collection text-white"></i>
+            </div>
+            <div class="widget-chart-content">
+               <div class="widget-subheading">Clubs</div>
+               <div class="widget-numbers"><span><%= Club.count %></span></div>
+            </div>
+         </div>
+         <div class="divider m-0 d-md-none d-sm-block"></div>
+      </div>
+      <div class="col-sm-12 col-md-4 col-xl-4">
+         <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+            <div class="icon-wrapper rounded-circle">
+               <div class="icon-wrapper-bg opacity-9 bg-success"></div>
+               <i class="bi bi-envelope-paper"></i>
+            </div>
+            <div class="widget-chart-content">
+               <div class="widget-subheading">Applications</div>
+               <div class="widget-numbers text-success"><span><%= Application.count %></span></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
 <h3>Selected candidates</h3>
 <%= link_to 'Print', all_selected_candidates_path, class: 'btn btn-info', target: '_blank' %>
 
@@ -10,3 +54,5 @@
     <% end %>
   <% end %>
 <% end %>
+
+<%= stylesheet_link_tag 'council_dashboard' %>

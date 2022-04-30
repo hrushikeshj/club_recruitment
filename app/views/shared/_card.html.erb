@@ -1,7 +1,21 @@
 <div class="card <%= _class if defined?(_class) %>">
   <% if defined?(title) %>
     <div class="card-header">
-      <%= title %>
+      <% if defined?(link) %>
+        <div class="row">
+          <div class="card-header-title col-6">
+            <%= title %>
+          </div>
+
+          <div class="col-6">
+            <div role="group" class="btn-group-sm btn-group float-end">
+              <%= link_to link[:name], link[:url], class: "btn btn-primary btn-xs", target: '_blank' %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <%= title %>
+      <% end %>
     </div>
   <% end %>
 

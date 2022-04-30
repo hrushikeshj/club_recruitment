@@ -16,7 +16,7 @@
   <% end %>
 
   <%= render 'show' %>
-  <%= form.number_field :status, class: "input" %>
+  <%= form.select :status, ApplicationSubmission.statuses.map{ |s, _| [s.humanize, s]}, selected: application_submission.status, prompt: '-Select-' %>
   <%= form.text_field :marks, class: "input" %>
   <%= form.check_box :selected, class: "input" %>
 
