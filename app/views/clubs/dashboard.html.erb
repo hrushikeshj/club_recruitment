@@ -10,7 +10,7 @@
   <%= render 'application_submissions/index', application_submissions: @submissions %>
 <% end %>
 
-<%= card _class: 'mt-4', title: 'Selected Application Submissions' do %>
+<%= card _class: 'mt-4', title: 'Selected Application Submissions', link: {name: 'Print', url: selected_candidates_club_path } do %>
   <%= render 'application_submissions/selected_index', application_submissions: @club.selected_applications %>
 <% end %>
 
