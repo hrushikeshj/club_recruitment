@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_07_132740) do
+ActiveRecord::Schema.define(version: 2022_05_02_112349) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(version: 2022_04_07_132740) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "short_name"
     t.text "description"
+  end
+
+  create_table "recruitment_configs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "key"
+    t.text "congif"
+    t.datetime "date", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "role_assignments", charset: "utf8mb4", force: :cascade do |t|

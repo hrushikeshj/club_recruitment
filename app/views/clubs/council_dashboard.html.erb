@@ -55,4 +55,16 @@
   <% end %>
 <% end %>
 
+<hr class="mt-4">
+<h3 class="mt-4">Deadline</h3>
+
+<div class="row mt-4" style="margin-left: 7px">
+   <%= card _class: 'col-12 col-sm-6' do %>
+      <%= bootstrap_form_with url: update_deadline_clubs_path, local: false do |f| %>
+         <%= f.datetime_field :deadline, value: RecruitmentConfig.get_deadline.date&.strftime("%Y-%m-%dT%k:%M") %>
+         <%= f.submit :Update, class: 'btn btn-primary' %>
+      <% end %>
+   <% end %>
+</div>
+
 <%= stylesheet_link_tag 'council_dashboard' %>

@@ -31,6 +31,9 @@ Rails.application.routes.draw do
       get :dashboard
       get :selected_candidates
     end
+    collection do
+      post :update_deadline
+    end
     get :users, to: 'users#club_users'
     get :application_submissions, to: 'application_submissions#index'
   end

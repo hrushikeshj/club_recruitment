@@ -4,6 +4,7 @@ class ApplicationSubmissionsController < ApplicationController
 
   before_action :set_application, only: %i[new create edit_preference select_clubs]
   before_action :set_application_submission, only: %i[show edit update destroy update_preference]
+  before_action :check_deadline, only: %i[create update_preference]
 
   respond_to :js, :html, :json
 
@@ -104,5 +105,17 @@ class ApplicationSubmissionsController < ApplicationController
 
   def set_application
     @application = Application.find(params[:application_id])
+  end
+
+  def check_deadline
+    unless RecruitmentConfig.application_open?
+      respond_to do |format|
+        format.json { head :forbidden }
+        format.html do
+          redirect_to login_path, alert: 'Application is closed'
+        end
+        format.js { render js: "alert('Application is closed');" }
+      end
+    end
   end
 end
