@@ -7,7 +7,11 @@
 <% else %>
   <figure class="text-center">
     <blockquote class="blockquote">
-      <p>Drag-and-drop list to update preference</p>
+      <% if RecruitmentConfig.application_open? %>
+        <p>Drag-and-drop list to update preference</p>
+      <% else %>
+        <p>Application is closed</p>
+      <% end %>
     </blockquote>
   </figure> 
 <% end %>

@@ -31,6 +31,9 @@ Rails.application.routes.draw do
       get :dashboard
       get :selected_candidates
     end
+    collection do
+      post :update_deadline
+    end
     get :users, to: 'users#club_users'
     get :application_submissions, to: 'application_submissions#index'
   end
@@ -41,4 +44,5 @@ Rails.application.routes.draw do
   get :all_application, to: 'applications#index'
   get :council_dashboard, to: 'clubs#council_dashboard'
   get :all_selected_candidates, to: 'clubs#all_selected_candidates'
+  get :background, to: 'users#background'
 end

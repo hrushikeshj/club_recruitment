@@ -8,6 +8,15 @@ class ClubsController < ApplicationController
 
   respond_to :js, :html, :json
 
+  # POST /clubs/update_deadline
+  def update_deadline
+    if RecruitmentConfig.update_deadline(params[:deadline])
+      render js: "$('#toast-text').html('Deadline updated!');$('.toast').toast('show');"
+    else
+      render js: "$('#toast-text').html('Unable to update');$('.toast').toast('show');"
+    end
+  end
+
   # GET /clubs/:id/selected_candidates
   def selected_candidates
     render 'selected_candidates', layout: 'print'

@@ -24,6 +24,7 @@
     <style>
       #main-body{
         background-color: #f3f3f354 !important;
+        background: linear-gradient(rgba(255,255,255,.45), rgba(255,255,255,.5)), url("/background.svg") fixed !important;
       }
     </style>
   </head>
@@ -74,6 +75,20 @@
           <div class="sk-grid-cube"></div>
         </div>
       </div>
+    
+    <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
+      <div class="toast-container position-absolute top-0 end-0 p-3" id="toastPlacement">
+        <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body" id="toast-text">
+              ...
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
       
     </main>
 
