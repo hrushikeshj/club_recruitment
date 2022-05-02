@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     @users = @club.users
   end
 
+  def background
+    render 'background', layout: false
+  end
+
   # GET /users
   def index
     @users = User.all.includes(:club, :roles)

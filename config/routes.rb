@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   get :all_application, to: 'applications#index'
   get :council_dashboard, to: 'clubs#council_dashboard'
   get :all_selected_candidates, to: 'clubs#all_selected_candidates'
+  get :background, to: 'users#background'
 end
