@@ -21,6 +21,20 @@ class User < ApplicationRecord
     application_submissions.selected.order(preference_no: :asc).first.club
   end
 
+  def display_role
+    if applicant?
+      'Applicant'
+    elsif council?
+      'Council'
+    elsif admin?
+      'Admin'
+    elsif has_role?(:convener)
+      'Convener'
+    else
+      roles&.first&.name
+    end
+  end
+
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end

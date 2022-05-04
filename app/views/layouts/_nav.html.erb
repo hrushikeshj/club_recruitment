@@ -49,6 +49,7 @@
 
        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if current_user%>
+        <span class="btn btn-outline-success me-2" type="button" style="cursor: auto;"><%= current_user.display_role %></span>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= current_user.name %>

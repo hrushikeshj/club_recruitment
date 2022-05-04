@@ -20,7 +20,7 @@
       <td><%= application_submission.preference_no %></td>
       <td><%= application_submission.status %></td>
       <td><%= application_submission.marks %></td>
-      <td><%= application_submission.selected %></td>
+      <td><%= (application_submission.selected ? '<span class="badge bg-success">Yes</span>' : '<span class="badge bg-secondary">No</span>').html_safe %></td>
       <td>
         <div role="group" class="btn-group-sm btn-group">
           <%= link_to 'Show', application_submission, format: :js, data: {toggle: "modal", target: "#ajax-modal"}, remote: true, class: "btn btn-primary" %>
