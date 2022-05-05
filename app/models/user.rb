@@ -28,7 +28,7 @@ class User < ApplicationRecord
       'Council'
     elsif admin?
       'Admin'
-    elsif has_role?(:convener)
+    elsif convener?
       'Convener'
     else
       roles&.first&.name
@@ -49,6 +49,10 @@ class User < ApplicationRecord
 
   def admin?
     has_role?(:admin)
+  end
+
+  def convener?
+    has_role?(:convener)
   end
 
   def assign_role(role_id)
