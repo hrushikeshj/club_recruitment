@@ -65,6 +65,18 @@
          <%= f.submit :Update, class: 'btn btn-primary' %>
       <% end %>
    <% end %>
+
+   <%= card _class: 'col-12 col-sm-5 l-4' do %>
+      Lock/Unlock allotment<br><br>
+      <%= link_to RecruitmentConfig.locked? ? 'Unlock' : 'Lock', lock_allotment_path, class: 'btn btn-primary'%>
+   <% end %>
 </div>
 
+
 <%= stylesheet_link_tag 'council_dashboard' %>
+
+<style>
+.l-4{
+   margin-left: 4px;
+}
+</style>
