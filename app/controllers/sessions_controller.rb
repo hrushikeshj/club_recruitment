@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       if user.applicant?
         redirect_to applicant_dashboard_user_path(current_user), notice: 'Logged in!'
+      elsif user.council?
+        redirect_to council_dashboard_path, notice: 'Logged in!'
       else
         redirect_to root_url, notice: 'Logged in!'
       end

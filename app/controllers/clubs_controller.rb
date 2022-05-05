@@ -8,6 +8,11 @@ class ClubsController < ApplicationController
 
   respond_to :js, :html, :json
 
+  def lock_allotment
+    RecruitmentConfig.update_lock(!RecruitmentConfig.locked?)
+    redirect_to council_dashboard_path, notice: RecruitmentConfig.locked? ? 'Locked' : 'Unlocked'
+  end
+
   # POST /clubs/update_deadline
   def update_deadline
     if RecruitmentConfig.update_deadline(params[:deadline])
