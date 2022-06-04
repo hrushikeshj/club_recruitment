@@ -4,7 +4,7 @@ Install ruby, yarn, nodejs and MySql
 
 ## Clone the repo
 ```git
-git clone https://<your_username>@github.com/hrushikeshj/club_recruitment 
+git clone https://hrushikeshj/club_recruitment 
 ```
 > cd into the folder club_recruitment 
 
@@ -52,21 +52,3 @@ rails s
 
 If everything went right you can vist the app at 
 [http://localhost:3000](http://localhost:3000/)
-
-# TODO
-- [x] Login/Sign-up
-- [x] Scaffold User, Application, Role, ApplicationSubmission, Club
-- [x] Authorization
-- [x] UI
-- [ ] Apply for clubs
-  - [x] Apply
-  - [x] Club Priority
-  - [ ] Assigning marks
-  - [ ] Selecting students
-- [x] Club Dashboard
-
-# Sync repo
-```bash
-git pull origin
-```
-Run ```yarn install``` if you get any javascript error.
