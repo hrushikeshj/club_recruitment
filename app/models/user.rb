@@ -64,7 +64,7 @@ class User < ApplicationRecord
   def assign_default_role
     return if roles.present?
 
-    self.assign_role(1)
+    self.assign_role(Role.find_by(name: 'applicant').id)
   end
 
 end
