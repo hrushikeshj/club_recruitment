@@ -11,6 +11,9 @@ module ClubRecruitment
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # _club_oauth_provider
+    config.session_store :cookie_store, key: ENV.fetch("COOKIE_SESSION") { "_club_recruitment_session" }
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
