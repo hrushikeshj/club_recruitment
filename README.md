@@ -57,6 +57,8 @@ If everything went right you can vist the app at
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
-imahe from continer
+image from continer
 $ docker commit 5a8f89adeead newimagename
 $ docker run -ti -v "$PWD/somedir":/somedir newimagename /bin/bash
+docker run -v $(pwd):/app -p 3000:3000 -p 3306:3306 -it -e DB_HOST=172.28.45.252 club-yarn
+rake tmp:clear
