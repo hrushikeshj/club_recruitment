@@ -1,0 +1,50 @@
+version: '3'
+name: 'club-rec'
+services:
+  app:
+    build: . 
+    command: /bin/bash run.sh
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      # :
+      #   condition: service_healthy
+
+
+    ports:
+      - 3000:3000
+    links:
+      - db:db
+    environment:
+      MYSQL_DBNAME: ${DOCKER_MYSQL_DBNAME}
+      MYSQL_USERNAME: ${DOCKER_MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${DOCKER_MYSQL_PASSWORD}
+      DB_HOST: db
+      MYSQL_DBPORT: 3306
+      LOAD_DBDUMP: ${INIT_DB}
+    restart: on-failure:10
+
+
+  db:
+    image: mysql:latest
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ${DOCKER_MYSQL_MOUNT_PATH}/data/backup/mysql:/var/lib/mysql
+      - ${DOCKER_MYSQL_MOUNT_PATH}/docker.cnf:/etc/mysql/conf.d/docker.cnf
+    environment:
+      MYSQL_DATABASE: ${DOCKER_MYSQL_DBNAME}
+      MYSQL_USER: ${DOCKER_MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${DOCKER_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DOCKER_MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: "%"
+    # healthcheck:
+    #   test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$MYSQL_ROOT_PASSWORD' ]
+    #   interval: 45s
+    #   timeout: 5s
+    #   retries: 30
+    #   start_period: 45s
+
+    ports:
+      - 3306:3306
+    restart: on-failure:10

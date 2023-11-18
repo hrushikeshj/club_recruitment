@@ -52,3 +52,11 @@ rails s
 
 If everything went right you can vist the app at 
 [http://localhost:3000](http://localhost:3000/)
+
+```
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
+imahe from continer
+$ docker commit 5a8f89adeead newimagename
+$ docker run -ti -v "$PWD/somedir":/somedir newimagename /bin/bash
