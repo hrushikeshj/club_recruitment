@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 rm -rf /app/tmp/pids/server.pid
-echo "mysql -h $DB_HOST -P $MYSQL_DBPORT -u $MYSQL_USERNAME -p$MYSQL_PASSWORD"
+yarn install
+bin/webpack
+
 echo "Starting Club App"
 if [[ $LOAD_DBDUMP -eq 1 ]]; then
     dbdump=./dev_seed_dump/club_recruitment_development.sql
