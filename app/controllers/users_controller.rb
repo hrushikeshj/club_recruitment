@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   authorize_resource
 
+  def info
+    render json: { email: current_user.email, name: current_user.name }
+  end
+
   # GET /users/1/applicant_dashboard
   def applicant_dashboard
   end

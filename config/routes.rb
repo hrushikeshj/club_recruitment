@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     member do
       get :applicant_dashboard
     end
+    get :info, on: :collection
   end
   # [:show, :edit, :update, :destroy]
 

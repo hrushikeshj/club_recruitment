@@ -20,6 +20,7 @@
     <ul class="nav nav-pills flex-column mb-auto">
       <% if can? :admin, User %>
         <li class="nav-item"><%= sidebar_link 'Admin', admin_applications_path %></li>
+        <li><%= sidebar_link 'OAuth2 Provider', oauth_applications_path %></li>
         <li><%= sidebar_link 'Users', users_path %></li>
         <li><%= sidebar_link 'Roles', admin_roles_path	 %></li>
         <li><%= sidebar_link 'All Applications', admin_root_path %></li>

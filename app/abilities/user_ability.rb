@@ -5,6 +5,7 @@ class UserAbility
     can :create, User
     return unless user.present?
 
+    can :info, User
     can :read, User # TODO: split
     can :update, User, id: user.id
 
