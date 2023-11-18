@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
   root "users#index"
+  get 'oauth_callback', to: "sessions#oauth_callback"
 
   resources :users do
     resources :applications, shallow: true do#only: [:index, :new, :create]
@@ -25,7 +26,10 @@ Rails.application.routes.draw do
   end
   # [:show, :edit, :update, :destroy]
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy] do
+    get 'via_oauth', on: :collection
+  end
+
   resources :clubs do
     member do
       get :dashboard

@@ -2,6 +2,22 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def via_oauth
+    redirect_to Oauth.authorize_url
+  end
+
+  def oauth_callback
+    code = params[:code]
+    client = Oauth.client
+
+    access = client.auth_code.get_token(code, redirect_uri: OAUTH_CALLBACK_URL)
+    session[:oauth_token] = access.token
+
+    p access.token
+
+    redirect_to '/login', notice: access.token
+  end
+
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
