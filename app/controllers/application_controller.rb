@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     else
       @current_user = nil
     end
+
+    if doorkeeper_token
+      @current_user ||= User.find(doorkeeper_token.resource_owner_id)
+    end
   end
 
   def current_ability

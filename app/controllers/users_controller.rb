@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
+    p [doorkeeper_token, "fffff"]
     @users = User.all.includes(:club, :roles)
   end
 

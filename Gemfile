@@ -31,6 +31,8 @@ gem "bootstrap_form", "~> 5.0"
 gem 'activeadmin'
 gem 'cancancan'
 gem 'image_processing', '~> 1.2'
+gem 'doorkeeper'
+gem 'oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
