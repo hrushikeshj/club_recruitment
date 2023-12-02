@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  helper_method :current_user, :oauth_access
 
   def current_user
     if session[:user_id]
@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     else
       @current_user = nil
     end
+  end
+
+  def oauth_access
+    return nil if session[:oauth_token].nil?
+
+    @oauth_access ||= Oauth.access_from_token(session[:oauth_token])
   end
 
   def current_ability

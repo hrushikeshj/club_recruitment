@@ -8,4 +8,8 @@ module Oauth
   def self.authorize_url
     client.auth_code.authorize_url(redirect_uri: OAUTH_CALLBACK_URL)
   end
+
+  def self.access_from_token(token)
+    OAuth2::AccessToken.new(Oauth.client, token)
+  end
 end

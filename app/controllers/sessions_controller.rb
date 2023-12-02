@@ -7,6 +7,10 @@ class SessionsController < ApplicationController
   end
 
   def oauth_callback
+    if params[:error] && params[:code].nil?
+      redirect_to('/login', alert: "OAuth authentication failed") && return
+    end
+
     code = params[:code]
     client = Oauth.client
 
@@ -14,8 +18,27 @@ class SessionsController < ApplicationController
     session[:oauth_token] = access.token
 
     p access.token
+    begin
+      user_info = JSON.parse(access.get('/users/info.json').body)
+    rescue JSON::ParserError
+      redirect_to('/login', alert: "JSON prase error") && return
+    end
 
-    redirect_to '/login', notice: access.token
+    user = User.find_by(email: user_info["email"])
+    if user
+      session[:user_id] = user.id
+      if user.applicant?
+        redirect_to applicant_dashboard_user_path(current_user), notice: 'Logged in via OAuth!'
+      elsif user.council?
+        redirect_to council_dashboard_path, notice: 'Logged in via OAuth!'
+      else
+        redirect_to root_url, notice: user_info.to_s + 'Logged in  via OAuth!'
+      end
+
+      return
+    end
+
+    redirect_to '/login', alert: user_info.to_s + "User not found"
   end
 
   def create
@@ -37,6 +60,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:oauth_token] = nil
     redirect_to login_path, notice: 'Logged out!'
   end
 end

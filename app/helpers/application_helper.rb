@@ -19,4 +19,10 @@ module ApplicationHelper
     </div>
     ".html_safe
   end
+
+  def oauth_display_info
+    JSON.parse(oauth_access.get('/users/info.json').body)
+  rescue
+    "---"
+  end
 end
