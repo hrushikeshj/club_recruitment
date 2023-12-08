@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 
   def oauth_callback
     if params[:error] && params[:code].nil?
-      redirect_to('/login', alert: "OAuth authentication failed") && return
+      
+      redirect_to('/login', alert: "OAuth authentication failed - #{params[:error_description]}") && return
     end
 
     code = params[:code]
@@ -32,7 +33,7 @@ class SessionsController < ApplicationController
       elsif user.council?
         redirect_to council_dashboard_path, notice: 'Logged in via OAuth!'
       else
-        redirect_to root_url, notice: user_info['email'] + 'Logged in  via OAuth!'
+        redirect_to root_url, notice: user_info['email'] + ' Logged in  via OAuth!'
       end
 
       return
