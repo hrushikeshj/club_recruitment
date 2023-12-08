@@ -8,8 +8,8 @@ class ClubAbility
 
     can :update, Club, id: user.club_id
 
-    can :council_dashboard, Club if user.has_role?(:council)
-    can %i[selected_candidates all_selected_candidates dashboard], Club if user.convener? || user.council?
+    #> can :council_dashboard, Club if user.has_role?(:council)
+    #> can %i[selected_candidates all_selected_candidates dashboard], Club if user.convener? || user.council?
 
     return unless user.admin?
 
