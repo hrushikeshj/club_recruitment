@@ -32,13 +32,13 @@ class SessionsController < ApplicationController
       elsif user.council?
         redirect_to council_dashboard_path, notice: 'Logged in via OAuth!'
       else
-        redirect_to root_url, notice: user_info.to_s + 'Logged in  via OAuth!'
+        redirect_to root_url, notice: user_info['email'] + 'Logged in  via OAuth!'
       end
 
       return
     end
 
-    redirect_to '/login', alert: user_info.to_s + "User not found"
+    redirect_to '/login', alert: user_info['email'] + "User not found"
   end
 
   def create

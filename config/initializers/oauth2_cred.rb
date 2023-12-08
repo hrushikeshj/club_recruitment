@@ -1,5 +1,5 @@
-OAUTH_CLIENT_ID = 'gmDfezVpjd1_yqtZnrus7yFY9iRtjr03n9UpmJ2chGc'
-OAUTH_SECRET = 'KuJjkKVXKzmh3Vj_9QrF5nzFbWzlQNxuFAGRUnmG0U4'
+OAUTH_CLIENT_ID = 'jUFWIIXG0AcCnlig_6lyJehoVIXRqUDnAGimDJXfJH0'
+OAUTH_SECRET = 'W29K8oKilY7hFrFEPYzVFULkp6zgNRzqlQcstIPo9ck'
 OAUTH_AUTH_HOST = 'http://localhost:9000'
 
 OAUTH_CALLBACK_URL = "http://localhost:3000/oauth_callback"
