@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   def current_ability
     @current_ability ||= UserAbility.new(current_user)
+                          .merge(DbAbility.new(current_user))
                           .merge(ApplicationAbility.new(current_user))
                           .merge(ClubAbility.new(current_user))
                           .merge(ApplicationSubmissionAbility.new(current_user))

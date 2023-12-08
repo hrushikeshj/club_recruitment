@@ -1,0 +1,23 @@
+<%= bootstrap_form_with(model: permission) do |form| %>
+  <% if permission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
+
+      <ul>
+        <% permission.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.text_field :subject %>
+  
+  <%= form.text_area :actions %>
+
+  <p>Give this permission to: </p>
+  <%= form.collection_check_boxes(:role_ids, Role.all, :id, :name) %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
