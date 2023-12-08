@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_18_135603) do
+ActiveRecord::Schema.define(version: 2023_12_08_202218) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -145,6 +145,13 @@ ActiveRecord::Schema.define(version: 2023_11_18_135603) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "permissions", charset: "utf8mb4", force: :cascade do |t|
+    t.string "subject"
+    t.text "actions"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "recruitment_configs", charset: "utf8mb4", force: :cascade do |t|
     t.string "key"
     t.text "congif"
@@ -160,6 +167,15 @@ ActiveRecord::Schema.define(version: 2023_11_18_135603) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_role_assignments_on_role_id"
     t.index ["user_id"], name: "index_role_assignments_on_user_id"
+  end
+
+  create_table "role_permissions", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "permission_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["permission_id"], name: "index_role_permissions_on_permission_id"
+    t.index ["role_id"], name: "index_role_permissions_on_role_id"
   end
 
   create_table "roles", charset: "utf8mb4", force: :cascade do |t|
@@ -190,5 +206,7 @@ ActiveRecord::Schema.define(version: 2023_11_18_135603) do
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "role_assignments", "roles"
   add_foreign_key "role_assignments", "users"
+  add_foreign_key "role_permissions", "permissions"
+  add_foreign_key "role_permissions", "roles"
   add_foreign_key "users", "branches"
 end

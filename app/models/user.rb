@@ -8,6 +8,7 @@ class User < ApplicationRecord
   belongs_to :branch, optional: true
 
   has_many :application_submissions, through: :application
+  has_many :permissions, through: :roles
 
   has_many :access_grants,
            class_name: 'Doorkeeper::AccessGrant',

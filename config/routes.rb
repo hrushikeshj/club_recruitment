@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   use_doorkeeper
+
   ActiveAdmin.routes(self)
   get 'sessions/new'
   get 'sessions/create'
@@ -49,4 +50,5 @@ Rails.application.routes.draw do
   get :background, to: 'users#background'
 
   get :lock_allotment, to: 'clubs#lock_allotment'
+  resources :permissions
 end
