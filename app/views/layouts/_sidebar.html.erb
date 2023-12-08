@@ -23,20 +23,23 @@
         <li><%= sidebar_link 'OAuth2 Provider', oauth_applications_path %></li>
         <li><%= sidebar_link 'Users', users_path %></li>
         <li><%= sidebar_link 'Roles', admin_roles_path	 %></li>
-        <li><%= sidebar_link 'Roles', permissions_path	 %></li>
+        <li><%= sidebar_link 'Permissions', permissions_path	 %></li>
         <li><%= sidebar_link 'All Applications', admin_root_path %></li>
       <% end %>
-      <li><%= sidebar_link 'Clubs', clubs_path	 %></li>
-      <% if can? :council_dashboard, Club %>
-        <li><%= sidebar_link 'Council Dashboard', council_dashboard_path %></li>
+
+      <% if params[:show_dashboard] %>
+        <li><%= sidebar_link 'Clubs', clubs_path	 %></li>
+        <% if can? :council_dashboard, Club %>
+          <li><%= sidebar_link 'Council Dashboard', council_dashboard_path %></li>
+        <% end %>
+        <% if can? :admin, User %>
+          <li><%= sidebar_link 'Show Applications', all_application_path %></li>
+        <% end %>
+        <% if current_user&.club_id %>
+          <li><%= sidebar_link 'Club Dashboard', dashboard_club_path(id: current_user.club_id) %></li>
+        <% end %>
       <% end %>
-      <% if can? :admin, User %>
-        <li><%= sidebar_link 'Show Applications', all_application_path %></li>
-      <% end %>
-      <% if current_user&.club_id %>
-        <li><%= sidebar_link 'Club Dashboard', dashboard_club_path(id: current_user.club_id) %></li>
-      <% end %>
-      <% if current_user %>
+      <% if current_user && params[:show_dashboard] %>
         <%
           step_2 ||= ''
           step_3 ||= ''

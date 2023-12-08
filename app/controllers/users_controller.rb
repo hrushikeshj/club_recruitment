@@ -9,6 +9,14 @@ class UsersController < ApplicationController
     render json: { email: current_user.email, name: current_user.name }
   end
 
+  def permissions
+    per = current_user.permissions.map do |p|
+      {subject: p.subject, action: p.actions_arr}
+    end
+    render json: per
+  end
+
+
   # GET /users/1/applicant_dashboard
   def applicant_dashboard
   end

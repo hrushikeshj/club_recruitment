@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get :applicant_dashboard
     end
     get :info, on: :collection
+    get :permissions, on: :collection
   end
   # [:show, :edit, :update, :destroy]
 

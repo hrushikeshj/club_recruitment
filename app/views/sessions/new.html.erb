@@ -11,7 +11,7 @@
                     <div class="login-wrap p-4 p-md-5">
                 <div class="d-flex">
                     <div class="w-100">
-                        <h3 class="mb-4">Log In</h3>
+                        <h3 class="mb-4">Log In - OAuth Provider</h3>
                     </div>
                 </div>
                 <%= bootstrap_form_with url: sessions_path, class: "signin-form", method: :post do |f| %>
@@ -24,8 +24,8 @@
                         <label class="form-control-placeholder" for="password">Password</label>
                         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                    <div class="form-group ">
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3 btn-login-new">Sign In</button>
                     </div>
                     <div class="form-group d-md-flex">
                         <div class="w-50 text-left">
@@ -65,3 +65,11 @@
     })(jQuery);
 
 </script>
+
+<style>
+.btn-login-new {
+    background: #f3d19e !important;
+    border: 1px solid #f3d19e !important;
+    color: #fff !important;
+}
+</style>
