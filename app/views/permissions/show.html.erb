@@ -5,10 +5,14 @@
 
 <p>
   <strong>Actions:</strong>
-  <%= @permission.actions %>
+  <ul>
+    <% @permission.actions_arr.each do |a| %>
+      <li><%= a %></li>
+    <% end %>
+</ul>
 </p>
 
-<p>Roles</p>
+<p><b>Roles</b></p>
 
 <ul>
   <% @permission.roles.each do |role| %>
