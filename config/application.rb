@@ -12,7 +12,7 @@ module ClubRecruitment
     config.load_defaults 6.1
 
     # _club_oauth_provider
-    config.session_store :cookie_store, key: ENV.fetch("COOKIE_SESSION") { "_club_recruitment_session" }
+    config.session_store :cookie_store, key: ENV.fetch("COOKIE_SESSION") { "_club_recruitment_session_qqqq" }
     if File.file?('/.dockerenv') == true
       host_ip = `/sbin/ip route|awk '/default/ { print $3 }'`.strip
       config.web_console.whitelisted_ips = [ host_ip ]
