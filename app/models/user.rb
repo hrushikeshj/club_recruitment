@@ -8,6 +8,7 @@ class User < ApplicationRecord
   belongs_to :branch, optional: true
 
   has_many :application_submissions, through: :application
+  has_many :permissions, through: :roles
 
   accepts_nested_attributes_for :role_assignment
 

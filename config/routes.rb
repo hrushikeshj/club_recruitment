@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :permissions
   ActiveAdmin.routes(self)
   get 'sessions/new'
   get 'sessions/create'
